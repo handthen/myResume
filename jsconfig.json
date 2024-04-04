@@ -1,0 +1,10 @@
+{
+    "compilerOptions":{
+        "jsx": "react",
+        "experimentalDecorators": true,
+    }, 
+    "exclude": [
+        "node_modules",
+        "dist"
+    ],
+}

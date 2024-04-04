@@ -1,0 +1,21 @@
+.main {
+    margin: 20px 0;
+
+    .context {
+        width: 794px;
+        border-radius: 2px;
+        background: #fff;
+        height: 942px;
+        box-sizing: border-box;
+        padding: 20px;
+        color: black;
+        margin-bottom: 60px;
+    }
+
+}
+
+@media print {
+    .main {
+        margin: 0 auto;
+    }
+}
