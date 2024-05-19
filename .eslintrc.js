@@ -47,6 +47,7 @@ module.exports = {
         "@typescript-eslint/no-non-null-assertion": 0,
         "@typescript-eslint/no-inferrable-types": 0,
         "@typescript-eslint/ban-types": 0,
-        "react/prop-types": [2, { ignore: ['children'] }]
+        "react/prop-types": [2, { ignore: ['children'] }],
+        "react/display-name":0
     }
 }

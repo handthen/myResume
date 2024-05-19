@@ -1,0 +1,107 @@
+{
+    "titleNameMap": {
+        "educationList": "教育背景",
+        "workExpList": "工作经历",
+        "projectList": "项目经历",
+        "skillList": "个人技能",
+        "awardList": "更多信息",
+        "workList": "个人作品",
+        "aboutme": "自我介绍"
+    },
+    "avatar": {
+        "hidden": false
+    },
+    "profile": {
+        "name": "王冰",
+        "email": "frontallethargy@outlook.com",
+        "mobile": "199609795912",
+        "github": "",
+        "zhihu": "",
+        "xueli": "13",
+        "workExpYear": "2.5年",
+        "workPlace": "成都",
+        "positionTitle": "前端工程师"
+    },
+    "workExpList": [
+        {
+            "company_name": "成都金隧数据科技有限公司",
+            "department_name": "研发部",
+            "work_time": [
+                "2021.07",
+                "2022.06"
+            ],
+            "work_desc": "负责供中铁内部使用的 大盾构管理系统，智慧盾构管控中心 的维护优化与新功能的开发"
+        },
+        {
+            "company_name": "畅加科技有限公司",
+            "department_name": "研发部",
+            "work_time": [
+                "2022.07",
+                null
+            ],
+            "work_desc": "负责公司自研系统:畅享付，车用能源，便利店等系统的迭代开发与日常生产问题的解决，成功将版本从2.0迭代至5.0。负责公司部分外包项目的研发。维护高速石油系统，高速石油app及新功能的开发"
+        }
+    ],
+    "skillList": [
+        {
+            "skill_desc": "熟练运用JS，HTML，CSS ，Sass等前端开发技术"
+        },
+        {
+            "skill_desc": "熟悉npm(cnpm)等包管理工具。熟悉git版本管理工具，了解webpack 项目构建工具"
+        },
+        {
+            "skill_desc": "熟练使用vue2，vue3，vue-router，vue-cli，vuex，pinia等vue全家桶独立构建项目",
+            "skill_name": ""
+        },
+        {
+            "skill_name": "",
+            "skill_desc": "熟练使用常见UI框架：Element、Vant、AntDesgin等，快速进行页面开发"
+        },
+        {
+            "skill_name": "",
+            "skill_desc": "熟悉使用uniapp+Hbuliler开发，了解多平台开发"
+        },
+        {
+            "skill_name": "",
+            "skill_desc": "能够独立完成前端项目框架从0到1的搭建开发"
+        },
+        {
+            "skill_name": "",
+            "skill_desc": "了解NodeJS，Express，MySQL数据库等，能进行简单的服务器端接口编写"
+        }
+    ],
+    "projectList": [
+        {
+            "project_name": "中铁十四局智慧管控中心",
+            "project_role": "Vue3,TypeScript,ElementPlus,sass",
+            "project_time": "2021.07 - 2022.06",
+            "project_desc": "中铁十四局智慧管控中心可对全国近半数的大盾构工程项目实现“零距离”互动。通过数字互联网，实现专家远程问诊、远程联网监控、安全实时预警、监控数据集中，智能化解决一线施工难题，为工程安全优质建造保驾护航",
+            "project_content": "1.接手项目一个月后即负责整个项目前端部分页面研发、更新维护等; 2. 使用高德地图api实现对各项目在地图上的追踪标注；腾讯云音视频/多人会议api实现1对1/1对多呼叫以及各个会议的开展；3. 编写盾构课堂模块，集成模拟考试，题集预览，学术资料，在线课堂等，采用腾讯云TUIRoomKit实现新建课堂在线讲课；4. 资料中心文件预览，采用依次加载来优化图片列表第一次渲染卡顿的情况"
+        },
+        {
+            "project_name": "大盾构管理系统",
+            "project_role": "Vue2,ElementUi,sass",
+            "project_time": "2021.07 - 2022.06",
+            "project_desc": "大盾构管理系统可对中铁十四局的大盾构项目进行全方位的管理，包括但不限于用户管理、风险管理、短信预警、会议管理、部门管理、项目管理、盾构机管理等",
+            "project_content": "1.接收项目后及负责项目前端部分的后续维护优化和后续功能模块的开发(盾构课堂，版本管理等)；2.完成公共组件的编写和公共函数的封装，不断优化业务代码实现，高内聚思想；3. domToImage插件实现报表统计页面转图片功能，更改插件内部缩放倍数解决导出图片模糊问题"
+        },
+        {
+            "project_name": "畅享付",
+            "project_role": "Uniapp,vue2,UView2,sass",
+            "project_time": "2023.04 - 2023.08",
+            "project_desc": "公司自研项目，为加油加气站提供整体解决方案，实现油气站信息化管理；多端适配，提供包括无感支付，便捷支付加油，优惠券营销活动，发票开具，积分兑换，充值等一站式服务。分为移动端与web管理端",
+            "project_content": "1. 负责2.0版本到5.0版本的维护升级，功能迁移，线上问题解决等；2. 为多端使用，采用uniapp技术栈实现h5公众号，微信小程序，支付宝小程序多端适配以及多客户环境打包；3. 配合后台完成各个功能模块的开发如站点列表，个人中心，云闪付，社保卡支付加油等 4. 负责其后台管理畅加智慧能源系统的线上问题解决"
+        },
+        {
+            "project_name": "高速石油系统",
+            "project_role": "Uniapp,vue2,vant",
+            "project_time": "2022.09 - 至今",
+            "project_desc": "为浙江高速集团打造的一套包括但不限于,安全管理，日常督查，在线监测，风险预警，学习中心，智慧办公功能等一体化平台，具有app,公众号H5,小程序,web管理端",
+            "project_content": "1.负责将公司自研畅享付迁移至高速以及高速定制化化需求的开发,如优惠劵叠加,实名认证,站点地图等 2. 参与高速石油app的开发与维护,并利用Hbuilder打包app 3. 负责其子系统 资质证照，安全管理，学习中心，在线监测等基于vue-admin的后台系统与基于uniapp的h5页面的开发 4. 后期全权负责该系统的迭代与维护，保证该系统的稳定"
+        }
+    ],
+    "theme": {
+        "color": "#2f5785",
+        "tagColor": "#8bc34a"
+    }
+}

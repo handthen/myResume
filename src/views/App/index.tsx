@@ -8,7 +8,6 @@ import type { Resume } from "@/typings/configType"
 import type { State } from "@/typings/storeType"
 export default (): React.ReactElement => {
     const resume: Resume = useSelector<State>(state => state.app.resumeConfig) as Resume
-
     return (
         <Layout>
             <Header />

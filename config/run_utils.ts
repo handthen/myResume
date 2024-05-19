@@ -1,5 +1,8 @@
-const process_copy = {
-    env: {}
-}
+const config = require('./index');
 
-module.exports = process_copy
+const process_copy = {
+  env: {
+    ...(config[process.env.NODE_ENV!] || {}),
+  },
+};
+export default process_copy;

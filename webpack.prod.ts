@@ -47,16 +47,9 @@ module.exports = merge(baseConfig, {
     ],
     optimization: {
         splitChunks: {
-            chunks: 'all',
-            // maxSize: 1024 * 200,
-            // cacheGroups: {
-            //     // 自定义分包的名称为 vendors
-            //     vendors: {
-            //         test: /[\\/]node_modules[\\/]/,
-            //         name: 'vendors',
-            //         chunks: 'all',
-            //     },
-            // },
+            cacheGroups:{
+                
+            }
         },
         minimize: true, // 这个选项确保代码被压缩
         minimizer: [

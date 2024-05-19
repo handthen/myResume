@@ -1,6 +1,6 @@
 module.exports = {
     development: {
-        baseUrl: ""
+        baseUrl: "/api",
     },
     production: {
         baseUrl: ""

@@ -10,25 +10,13 @@
     </title>
 </head>
 <style>
-    .container {
-        max-height: 100vh;
-        overflow: auto;
-    }
-
-    .item {
-        height: 40px;
-        background: #000000;
-        margin-bottom: 8px;
-        color: #fff;
-        font-size: 18px;
-    }
 </style>
 
 <body>
-    <div id="app"></div>
-    <div class="container">
-        <div class="list">
-        </div>
+    <div id="app">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item basis"></div>
     </div>
 </body>
 <script>
@@ -202,28 +190,6 @@
             }
         }
     }
-
-    const data = []
-
-    // for (let index = 0; index < 100000; index++) {
-    //     data.push(index)
-    //     // const div = document.createElement("div")
-    //     // div.setAttribute("class", 'item')
-    //     // div.innerText = index
-    //     // div.onclick = function () {
-    //     //     console.log(this)
-    //     // }
-    //     // document.querySelector('.list').appendChild(div)
-    // }
-
-    // const list = new List({
-    //     containerBox: '.container',
-    //     listBox: ".list",
-    //     data,
-    //     render: (data, style) => {
-    //         console.log(data, style)
-    //     }
-    // })
 
 </script>
 
