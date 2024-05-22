@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useRef, useCallback, useMemo } 
 import style from "../index.module.scss"
 import useEvent from "@/hooks/useEvent"
 import { Context } from "./Provider"
-import { RgbReg } from '@/utils'
+import { RgbReg,toRgb } from '@/utils'
 
 const rgbMap = {
     0: [255, 0, 0],
@@ -48,7 +48,7 @@ function SilderColor(): React.ReactElement {
     const bgStyle = useMemo(() => {
         let bg = ''
         for (const key in rgbMap) {
-            if (rgbMap.hasOwnProperty(key)) {
+            if (Object.prototype.hasOwnProperty.call(rgbMap,key)) {
                 const val = rgbMap[key]
                 bg += `rgb(${val[0]},${val[1]},${val[2]}),`
             }
@@ -211,9 +211,11 @@ function SilderOpacity(): React.ReactElement {
     function computRangerColor(opaction: string, color: string) {
         let computColor = ''
         if (color.indexOf('rgb') != -1) {
-            const macthColor = color.match(RgbReg)?.slice(1, 5)!
-            macthColor[3] = opaction
-            computColor = `rgba(${macthColor.join(',')})`
+            const macthColor = color.match(RgbReg)?.slice(1, 5)
+            if(macthColor){
+                macthColor[3] = opaction
+                computColor = `rgba(${macthColor.join(',')})`
+            }
         } else {
             let ob16 = Number((+opaction * 255).toFixed()).toString(16)
             ob16 = ob16.length == 1 ? '0' + ob16 : ob16

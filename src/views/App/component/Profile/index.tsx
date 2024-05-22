@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import type { Resume } from "@/typings/configType"
 
 export default (props: Resume): React.ReactElement => {
-    const { profile } = props
+    const { profile } = props!
     const { name } = profile!
     const data = useMemo(() => Object.keys(profile!), [profile])
     return (

@@ -6,7 +6,7 @@ module.exports = (function () {
   const { CleanWebpackPlugin } = require('clean-webpack-plugin');
   const webpackBar = require('webpackbar');
   const ImageMinimizerWebpackPlugin = require('image-minimizer-webpack-plugin');
-
+  const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
   const compileLoader =
     process.env.NODE_ENV == 'development'
       ? {
@@ -81,6 +81,12 @@ module.exports = (function () {
         basic: false,
         // reports:[]//自定义
       }),
+      // new ForkTsCheckerWebpackPlugin({
+      //   async: false, // 设置为 false 以使错误在 Webpack 构建过程中被报告
+      //   typescript: {
+      //     configFile: path.resolve(__dirname, 'tsconfig.json'),
+      //   },
+      // }),
     ],
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -89,6 +95,7 @@ module.exports = (function () {
       },
     },
     stats: 'errors-only',
+    cache: { type: 'filesystem' },
     // optimization: {
     //     minimizer: [
     //         new ImageMinimizerWebpackPlugin({

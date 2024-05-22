@@ -1,7 +1,12 @@
 {
     "root": "true",
     "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": "./src",
         "target": "esnext",
+        "noEmit": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
         "module": "esnext",
         "jsx": "react",
         "sourceMap": true,
@@ -10,7 +15,7 @@
         "checkJs": true,
         "allowJs": true,
         "noImplicitAny": false,
-        "noImplicitThis": true,
+        "noImplicitThis": false,
         "strictNullChecks": true,
         "moduleResolution": "node",
         "typeRoots": [
@@ -22,17 +27,18 @@
         "emitDecoratorMetadata": true,
         "baseUrl": "./",
         "paths": {
-            "@/*": [
-                "src/*"
-            ],
+            "@/*": ["src/*"],
+            "@": ["src"],
         }
     },
     "exclude": [
         "node_modules",
-        "config/*",
-        "dist/*"
+        "config",
+        "dist",
+        "webpack.prod.ts"
     ],
     "include": [
-        "src/*"
-    ]
+        "src/*",
+        "src/*/*.ts"
+, "src/utils/domToImage.ts"    ]
 }
