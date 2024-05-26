@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable no-var */
 // @ts-nocheck
 export default function (global) {
   'use strict';

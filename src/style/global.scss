@@ -55,6 +55,16 @@ body {
 .mb-10 {
     margin-bottom: 10px;
 }
+.text-line{
+    display: flex;
+}
+.text-line::after{
+    content: "";
+    flex: 0.98;
+    height: 1px;
+    background-color: var(--themeColor);
+    align-self: center;
+}
 
 @media print {
     @page {

@@ -5,23 +5,33 @@ module.exports = (function () {
   const HtmlWebpackPlugin = require('html-webpack-plugin');
   const { CleanWebpackPlugin } = require('clean-webpack-plugin');
   const webpackBar = require('webpackbar');
-  const ImageMinimizerWebpackPlugin = require('image-minimizer-webpack-plugin');
-  const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-  const compileLoader =
-    process.env.NODE_ENV == 'development'
-      ? {
-          loader: 'esbuild-loader',
-          options: {
-            loader: 'tsx', // 开启对 JSX 的支持
-            target: 'es2015', // 设置编译目标为 ES2015 语法
-          },
-        }
-      : {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true, //缓存
-          },
-        };
+
+  function getDevConfig() {
+    const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+    const compileLoader =
+      process.env.NODE_ENV == 'development'
+        ? {
+            loader: 'esbuild-loader',
+            options: {
+              loader: 'tsx', // 开启对 JSX 的支持
+              target: 'es2015', // 设置编译目标为 ES2015 语法
+            },
+          }
+        : {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true, //缓存
+            },
+          };
+
+    return {
+      compileLoader,
+      plugins: [new TsconfigPathsPlugin()],
+    };
+  }
+
+  const { compileLoader, plugins } = getDevConfig();
+
   return {
     mode: 'development',
     entry: __dirname + '/src/main.tsx', //入口文件
@@ -48,7 +58,7 @@ module.exports = (function () {
           },
         },
         {
-          test: /\.(js|jsx|ts|tsx)$/,
+          test: /\.(ts|tsx)$/,
           exclude: /node_modules/,
           use: [compileLoader],
         },
@@ -68,9 +78,10 @@ module.exports = (function () {
         },
       }),
       new CleanWebpackPlugin(), //每次打包先清空dist文件夹
+      //webpack5 删除了process buffer 等node补丁 环境变量可以采用如下注入业务环境
       // new webpack.ProvidePlugin({
       //   process: 'process/browser',
-      // }), //webpack5 删除了process buffer 等node补丁 环境变量可以采用如下注入业务环境
+      // }),
       new webpack.DefinePlugin({
         NODE_ENV: JSON.stringify(process.env.NODE_ENV), //`'${process.env.NODE_ENV}'`
       }),
@@ -93,40 +104,9 @@ module.exports = (function () {
       alias: {
         '@': path.resolve(__dirname, 'src'),
       },
+      plugins: [...plugins],
     },
     stats: 'errors-only',
-    cache: { type: 'filesystem' },
-    // optimization: {
-    //     minimizer: [
-    //         new ImageMinimizerWebpackPlugin({
-    //             minimizer: {
-    //                 implementation: ImageMinimizerWebpackPlugin.imageminGenerate,
-    //                 options: {
-    //                     plugins: [
-    //                         // ["gifsicle", { interlaced: true }],
-    //                         // ["jpegtran", { progressive: true }],
-    //                         ["optipng", { optimizationLevel: 5 }],
-    //                         [
-    //                             "svgo",
-    //                             {
-    //                                 plugins: [
-    //                                     "preset-default",
-    //                                     "prefixIds",
-    //                                     {
-    //                                         name: "sortAttrs",
-    //                                         params: {
-    //                                             xmlnsOrder: "alphabetical",
-    //                                         },
-    //                                     },
-    //                                 ],
-    //                             },
-    //                         ],
-    //                     ],
-    //                 },
-
-    //             }
-    //         })
-    //     ]
-    // }
+    // cache: { type: 'filesystem' },
   };
 })();

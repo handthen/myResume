@@ -35,7 +35,14 @@ module.exports = merge(baseConfig, {
               },
             },
           },
-          { loader: 'css-loader', options: { modules: true } },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[local]',
+              },
+            },
+          },
           'sass-loader',
         ],
       },
@@ -52,7 +59,14 @@ module.exports = merge(baseConfig, {
               },
             },
           },
-          { loader: 'css-loader', options: { modules: false } },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[local]',
+              },
+            },
+          },
           'sass-loader',
         ],
       },

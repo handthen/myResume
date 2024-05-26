@@ -193,7 +193,22 @@
 
 </script>
 <script>
-    console.log(/node_modules[\\\\/]/.test(JSON.stringify("node_modules/m")))
+    const composePromise = (...fn) => {
+        const first = fn.pop()
+        return (...arg) => {
+            return fn.reverse().reduce(async (a, b) => {
+                const result = await a
+                return b(result)
+            }, Promise.resolve(first(...arg)))
+        }
+    }
+
+    function foo() {
+        return new Promise(r => setTimeout(r, 2000))
+    }
+
+    const next = composePromise(foo, foo, foo)
+    next()
 </script>
 
 </html>

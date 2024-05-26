@@ -14,5 +14,6 @@ reducersModule.keys().forEach((path) => {
     reducers[pathName] = module[0];
   }
 });
+
 export default combineReducers(reducers);
 export const Watchs = WatchsReducer;

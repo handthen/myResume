@@ -1,6 +1,7 @@
-import type { Action, Worker } from '@/typings/actionTypes';
+import type { Worker } from '@/typings/actionTypes';
 import { getStoreSlice, getWacthEffect } from '@/utils';
 import type { State } from '@/typings/storeType';
+
 const worker: Worker<State['app']> = {
   state: {
     resumeConfig: {},
@@ -9,19 +10,26 @@ const worker: Worker<State['app']> = {
       primaryColor: 'red',
     },
   },
-  effect: {},
+  effect: {
+    *getResume({ callback }, { put }) {
+      const data = yield require('../../../resume.json');
+      yield put({
+        type: 'app/set_resume_config',
+        payload: data,
+      });
+      callback && callback(data);
+    },
+  },
   reducer: {
     set_resume_config({ payload }, state) {
+      console.log(payload);
       return {
-        ...state,
         resumeConfig: payload,
       };
     },
     set_theme_color({ payload }, state) {
       return {
-        ...state,
         theme: {
-          ...state.theme,
           ...payload,
         },
       };

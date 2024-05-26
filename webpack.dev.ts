@@ -11,7 +11,7 @@ module.exports = merge(
       historyApiFallback: true,
       compress: true, //gzip压缩
       port: process.env.PORT,
-      // hot: true,
+      hot: true,
       // open: true,
       // proxy: {
       //     "/api": {

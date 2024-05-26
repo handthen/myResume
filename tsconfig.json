@@ -3,11 +3,11 @@
     "compilerOptions": {
         "outDir": "./dist",
         "rootDir": "./src",
-        "target": "esnext",
+        "target": "ES2015",
         "noEmit": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "module": "esnext",
+        "module": "ESNext",
         "jsx": "react",
         "sourceMap": true,
         "removeComments": true,
@@ -25,7 +25,7 @@
         "esModuleInterop": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "baseUrl": "./",
+        "baseUrl": ".",
         "paths": {
             "@/*": ["src/*"],
             "@": ["src"],
@@ -37,8 +37,5 @@
         "dist",
         "webpack.prod.ts"
     ],
-    "include": [
-        "src/*",
-        "src/*/*.ts"
-, "src/utils/domToImage.ts"    ]
+    "include": ["src"]
 }

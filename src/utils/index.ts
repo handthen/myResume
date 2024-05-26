@@ -17,8 +17,7 @@ export function getStoreSlice<T>(worker: Worker<T>, fix?: string) {
     const flag2 = !path2 && !fix;
     if (flag1 || flag2) {
       const path = flag2 ? path1 : path2;
-      const newState = reducer[path] ? reducer[path].call(worker.state, action, worker.state) : state;
-      return newState;
+      return reducer[path] ? extend(state as object, reducer[path].call(worker.state, action, worker.state) as object) : state;
     } else {
       return state;
     }
@@ -42,7 +41,6 @@ export function getWacthEffect<T>(worker: Worker<T>, fix?: string) {
 }
 
 export function print() {
-  console.log(window.devicePixelRatio);
   domToImage(window)
     .toPng(document.body, {
       width: window.innerWidth,
@@ -51,13 +49,13 @@ export function print() {
     })
     .then((res) => {
       let link = document.createElement('a');
-      link.display = 'none';
+      link.style.display = 'none';
       link.download = +new Date() + '.png';
       console.log(res);
       link.href = res;
       document.body.appendChild(link);
       link.click();
-      link = null;
+      link = null!;
     });
 
   // window.print();
@@ -81,14 +79,12 @@ export function toScale16(str: string) {
       return t;
     }, '#');
 
-  console.log(str.match(RgbReg), '====', str);
-
   return match;
 }
 
 export function toRgb(str: string) {
   if (!str || str.indexOf('rgb') != -1) return str;
-  const matchColor = str.match(B16Reg)?.slice(1, 5)!;
+  const matchColor = str.match(B16Reg)?.slice(1, 5) ?? [];
   const RgbVal = matchColor
     .reduce((t, c, i) => {
       if (c) {
@@ -106,4 +102,34 @@ export function toRgb(str: string) {
 export function getPathName(path: string): string {
   const name = path.match(pathNameReg)![1];
   return name;
+}
+
+export function extend(source: object | Array<any>, ...args: (object | Array<any> | WeakMap<any, any>)[]) {
+  if (!source) {
+    source = {};
+  }
+  if (['Object', 'Array'].indexOf(getType(source)) == -1) return {};
+  const stype = getType(source);
+  let weakmap = args.slice(-1)[0] as WeakMap<any, any>;
+  weakmap instanceof WeakMap ? args.pop() : (weakmap = new WeakMap());
+  for (let i = 0; i < args.length; i++) {
+    const currentTarget = args[i];
+    if (weakmap.has(currentTarget)) continue;
+    const ttype = getType(currentTarget);
+    weakmap.set(currentTarget, currentTarget);
+    if (['Object', 'Array'].indexOf(ttype) == -1) continue;
+    if (getType(currentTarget) == 'Array' && stype == 'Array') return (source as []).concat(currentTarget as []);
+    const keys = Object.keys(currentTarget);
+    keys.forEach((key) => {
+      const sv = source[key];
+      const tv = currentTarget[key];
+      if (getType(sv) == 'Ubject' && getType(tv) == 'Object') {
+        source[key] = extend(sv, tv);
+      } else {
+        source[key] = tv;
+      }
+    });
+  }
+
+  return source;
 }
