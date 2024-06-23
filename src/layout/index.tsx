@@ -5,6 +5,7 @@ import Footer from "./Footer"
 import Header from "./Header"
 import type { State } from "@/typings/storeType"
 
+
 export default function Layout({ children }): React.ReactElement {
     const themeConfig = useSelector((state: State) => state.app.theme)
     const theme = useMemo(() => {
@@ -15,7 +16,7 @@ export default function Layout({ children }): React.ReactElement {
             return t
         }, {})
     }, [themeConfig])
-    console.log(theme)
+
     return (
         <div style={{ ...theme }}>
             {children}

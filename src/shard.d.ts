@@ -14,9 +14,9 @@ declare module 'axios' {
   export interface AxiosRequestConfig {
     // 添加数据类型
     handlerEnabled?: boolean;
-    baseURL: string;
-    timeout: number;
-    withCredentials: boolean;
+    baseURL?: string;
+    timeout?: number;
+    withCredentials?: boolean;
   }
 }
 // 处理TS数据类型问题  类型“AxiosResponse<any, any>”上不存在属性“meta”。
@@ -26,7 +26,7 @@ declare module 'axios' {
     // 这里追加你的参数
     baseURL?: string;
     timeout?: number;
-    withCredentials: boolean;
+    withCredentials?: boolean;
   }
   export function create(config?: AxiosRequestConfig): AxiosInstance;
 }

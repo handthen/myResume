@@ -7,7 +7,7 @@ import { HashRouter } from 'react-router-dom';
 import './style/global.scss';
 
 if(NODE_ENV=='development'){
-    require("antd/dist/antd.css")
+    require("antd/dist/antd.variable.min.css")
 }
 createRoot(document.getElementById('app')!).render(
   <StrictMode>

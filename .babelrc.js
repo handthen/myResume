@@ -12,10 +12,9 @@ module.exports = {
             "style": "css" // 指定按需加载 CSS 样式，默认为 "css"，也可以设置为 "less" 或 "true"
         }],
         ["@babel/plugin-proposal-decorators", { "legacy": true }], //解析装饰器
-        ["@babel/plugin-proposal-class-properties", { "loose": true }],
+        ["@babel/plugin-proposal-class-properties", { "loose": true }], // 无需构造函数中初始化属性
+        ["@babel/plugin-proposal-private-methods", { "loose": true }], // #
+        ["@babel/plugin-proposal-private-property-in-object", { "loose": true }], // #
         ["@babel/plugin-transform-runtime"],
-        ["@babel/plugin-proposal-private-methods", { "loose": true }],
-        ["@babel/plugin-proposal-private-property-in-object", { "loose": true }],
-
     ]
 };

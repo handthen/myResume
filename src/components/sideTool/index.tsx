@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Button, Upload, message } from "antd"
 import { print } from "@/utils"
 import ColorPlan from "@/components/colorPlan"
-import { Dropdown } from "antd"
+import { Dropdown ,ConfigProvider} from "antd"
 import type { State } from "@/typings/storeType"
 const styles: any = {
     tool: {
@@ -44,6 +44,11 @@ export default (): React.ReactElement => {
             type: "app/set_theme_color",
             payload: {
                 themeColor: e.b16
+            }
+        })
+        ConfigProvider.config({
+            theme:{
+                primaryColor:e.b16
             }
         })
     }

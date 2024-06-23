@@ -15,7 +15,7 @@ export default (): React.ReactElement => {
         type: 'app/getResume',
       });
   },[])
-
+  console.log(resume)
   return (
     <Layout>
       <Header />
@@ -23,7 +23,7 @@ export default (): React.ReactElement => {
         {resume.profile && <Profile profile={resume.profile} />}
         {resume.projectList && <ProjectList projectList={resume.projectList} />}
         {resume.educationList && <EducationList projectList={resume.projectList} />}
-        <WorkExpList />
+        {resume.workExpList && <WorkExpList workExpList={resume.workExpList} />}
       </Main>
       <Footer />
     </Layout>

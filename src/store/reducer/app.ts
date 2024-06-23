@@ -22,7 +22,6 @@ const worker: Worker<State['app']> = {
   },
   reducer: {
     set_resume_config({ payload }, state) {
-      console.log(payload);
       return {
         resumeConfig: payload,
       };

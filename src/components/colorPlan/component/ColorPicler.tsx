@@ -102,6 +102,8 @@ export default (props: Props): React.ReactElement => {
 
     const saveColor = (x: number, y: number, colorType?: string) => {
         try {
+            x= x<0?0:x
+            y= y<0?0:y
             const ctx = ctxRef.current!
             const { colorCache } = store
             const data = ctx.getImageData(x, y, 1, 1)?.data

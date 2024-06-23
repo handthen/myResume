@@ -12,6 +12,9 @@ module.exports = merge(
       compress: true, //gzip压缩
       port: process.env.PORT,
       hot: true,
+      client: {
+        progress: true,
+      },
       // open: true,
       // proxy: {
       //     "/api": {
@@ -60,11 +63,11 @@ module.exports = merge(
     plugins: [
       new ESLintPlugin(),
       new webpack.HotModuleReplacementPlugin(), //热更新
-      new Friendly({
-        compilationSuccessInfo: {
-          messages: [`${process.env.NODE_ENV}  localhost: http://localhost:${process.env.PORT}`, process.env.L_IP_ ? `                        http://${process.env.L_IP_}:${process.env.PORT}` : ''],
-        },
-      }),
+      // new Friendly({
+      //   compilationSuccessInfo: {
+      //     messages: [`${process.env.NODE_ENV}  localhost: http://localhost:${process.env.PORT}`, process.env.L_IP_ ? `                        http://${process.env.L_IP_}:${process.env.PORT}` : ''],
+      //   },
+      // }),
     ],
   },
   baseConfig

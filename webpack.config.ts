@@ -66,6 +66,28 @@ module.exports = (function () {
     },
     //插件
     plugins: [
+      new webpackBar({
+        name: '咻咻咻咻-------',
+        color: 'green',
+        basic: false,
+        // reports:[]//自定义
+      }),
+      new CleanWebpackPlugin(), //每次打包先清空dist文件夹
+      //webpack5 删除了process buffer 等node补丁 环境变量可以采用如下注入业务环境
+      // new webpack.ProvidePlugin({
+      //   process: 'process/browser',
+      // }),
+      new webpack.DefinePlugin({
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV), //`'${process.env.NODE_ENV}'`
+      }),
+      // @ts-ignore
+
+      // new ForkTsCheckerWebpackPlugin({
+      //   async: false, // 设置为 false 以使错误在 Webpack 构建过程中被报告
+      //   typescript: {
+      //     configFile: path.resolve(__dirname, 'tsconfig.json'),
+      //   },
+      // }),
       new HtmlWebpackPlugin({
         filename: 'index.html', //打包后文件名
         template: './public/index.html',
@@ -77,27 +99,6 @@ module.exports = (function () {
           removeAttributeQuotes: true, //移除属性引号
         },
       }),
-      new CleanWebpackPlugin(), //每次打包先清空dist文件夹
-      //webpack5 删除了process buffer 等node补丁 环境变量可以采用如下注入业务环境
-      // new webpack.ProvidePlugin({
-      //   process: 'process/browser',
-      // }),
-      new webpack.DefinePlugin({
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV), //`'${process.env.NODE_ENV}'`
-      }),
-      // @ts-ignore
-      new webpackBar({
-        name: '咻咻咻咻-------',
-        color: 'green',
-        basic: false,
-        // reports:[]//自定义
-      }),
-      // new ForkTsCheckerWebpackPlugin({
-      //   async: false, // 设置为 false 以使错误在 Webpack 构建过程中被报告
-      //   typescript: {
-      //     configFile: path.resolve(__dirname, 'tsconfig.json'),
-      //   },
-      // }),
     ],
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -107,6 +108,6 @@ module.exports = (function () {
       plugins: [...plugins],
     },
     stats: 'errors-only',
-    // cache: { type: 'filesystem' },
+    cache: { type: 'filesystem' },
   };
 })();

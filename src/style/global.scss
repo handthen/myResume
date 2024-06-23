@@ -1,3 +1,5 @@
+@import "@/style/var.scss";
+
 * {
     margin: 0;
     padding: 0;
@@ -64,6 +66,48 @@ body {
     height: 1px;
     background-color: var(--themeColor);
     align-self: center;
+}
+
+@each $item in calc($gap-end/2){
+    @if($item%2==0){
+        .font-#{$item} {
+            font-size: #{$item}rpx;
+        }
+    }
+}
+
+@for $item from $gap-start through $gap-end{
+    .ml#{$item} {
+        margin-left: #{$item}px;
+    }
+
+    .mr#{$item} {
+        margin-right: #{$item}px;
+    }
+
+    .mt#{$item} {
+        margin-top: #{$item}px;
+    }
+
+    .mb#{$item} {
+        margin-bottom: #{$item}px;
+    }
+
+    .pl#{$item} {
+        padding-left:#{$item}px;
+    }
+
+    .pr#{$item} {
+        padding-right:#{$item}px;
+    }
+
+    .pt#{$item} {
+        padding-top:#{$item}px;
+    }
+
+    .pb#{$item} {
+        padding-bottom:#{$item}px;
+    }
 }
 
 @media print {
