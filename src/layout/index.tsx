@@ -4,7 +4,7 @@ import Main from "./Main"
 import Footer from "./Footer"
 import Header from "./Header"
 import type { State } from "@/typings/storeType"
-
+import {ConfigProvider} from "antd"
 
 export default function Layout({ children }): React.ReactElement {
     const themeConfig = useSelector((state: State) => state.app.theme)
@@ -16,7 +16,11 @@ export default function Layout({ children }): React.ReactElement {
             return t
         }, {})
     }, [themeConfig])
-
+    ConfigProvider.config({
+        theme:{
+            primaryColor:themeConfig.themeColor
+        }
+    })
     return (
         <div style={{ ...theme }}>
             {children}

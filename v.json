@@ -10,72 +10,74 @@
   },
   "avatar": { "hidden": false },
   "profile": {
-    "name": "王冰",
-    "email": "frontallethargy@outlook.com",
-    "mobile": "199609795912",
-    "github": "",
-    "zhihu": "",
-    "xueli": "13",
-    "workExpYear": "2.5年",
-    "workPlace": "成都",
+    "name": "姓名",
+    "email": "736****86@qq.com",
+    "mobile": "156********",
+    "github": "https://github.com/visiky",
+    "zhihu": "https://zhihu.com/people/visiky",
+    "workExpYear": "3",
+    "workPlace": "浙江杭州",
     "positionTitle": "前端工程师"
   },
   "educationList": [{ "edu_time": ["2014.09.01", "2018.06.30"], "school": "华南理工大学", "major": "网络工程", "academic_degree": "本科" }],
-  "awardList": [],
+  "awardList": [
+    { "award_info": "英语 CET6", "award_time": "2015" },
+    { "award_info": "蚂蚁近卫军 卓越个人奖", "award_time": "2018.09" },
+    { "award_info": "前端练习生 可视化讲师", "award_time": "2020.10" },
+    { "award_info": "前端早早聊 分享 “如何构思和开发开箱即用的可视化图表库 G2Plot”", "award_time": "2021.07" }
+  ],
   "workExpList": [
     {
-      "company_name": "成都金隧数据科技有限公司",
-      "department_name": "研发部",
-      "work_time": ["2021.07", "2022.06"],
-      "work_desc": "负责供中铁内部使用的 大盾构管理系统，智慧盾构管控中心 的维护优化与新功能的开发"
+      "company_name": "蚂蚁集团",
+      "department_name": "体验技术部",
+      "work_time": ["2018.06", null],
+      "work_desc": "1. 担任蚂蚁高管决策和管理协同产品 “数据作战室” 的前端负责人\r\n2. 负责蚂蚁敏捷 BI 产品 “DeepInsight” 的可视分析模块产品能力建设\n3. 数据可视化 AntV 团队核心成员，负责 G2、G2Plot 开源技术的建设"
     },
     {
-      "company_name": "畅加科技有限公司",
-      "department_name": "研发部",
-      "work_time": ["2022.07", null],
-      "work_desc": "负责公司自研系统:畅享付，车用能源，便利店等系统的迭代开发与日常生产问题的解决，成功将版本从2.0迭代至5.0。负责公司部分外包项目的研发。维护高速石油系统，高速石油app及新功能的开发"
+      "company_name": "蚂蚁金服",
+      "department_name": "大数据部",
+      "work_time": ["2017.06", "2017.12"],
+      "work_desc": "前端实习生。使用 React 参与开发多类产品：数据研发平台、数据决策平台、数据分析平台的研发工作，同时也参与大型 BI 产品的重构工作，有良好的编码习惯。"
+    },
+    {
+      "company_name": "数沃信息科技有限公司",
+      "department_name": "",
+      "work_time": ["2017.03", "2017.05"],
+      "work_desc": "前端实习生。使用 Vue 来实现平台功能和逻辑，再用 ECharts 来对数据挖掘分析后的可视化结果进行展示"
     }
   ],
   "skillList": [
-    { "skill_desc": "熟练运用JS，HTML，CSS ，Sass等前端开发技术" },
-    { "skill_desc": "熟悉npm(cnpm)等包管理工具。熟悉git版本管理工具，了解webpack 项目构建工具" },
-    { "skill_desc": "熟练使用vue2，vue3，vue-router，vue-cli，vuex，pinia等vue全家桶独立构建项目", "skill_name": "" },
-    { "skill_name": "", "skill_desc": "熟练使用常见UI框架：Element、Vant、AntDesgin等，快速进行页面开发" },
-    { "skill_name": "", "skill_desc": "熟悉使用uniapp+Hbuliler开发，了解多平台开发" },
-    { "skill_name": "", "skill_desc": "能够独立完成前端项目框架从0到1的搭建开发" },
-    { "skill_name": "", "skill_desc": "了解NodeJS，Express，MySQL数据库等，能进行简单的服务器端接口编写" }
+    { "skill_name": "HTML 和 CSS", "skill_desc": "", "skill_level": 89 },
+    { "skill_name": "TypeScript / JavaScript", "skill_level": 90 },
+    { "skill_name": "数据可视化", "skill_desc": "丰富的可视化工程实践以及开源经验", "skill_level": 90 },
+    { "skill_name": "React / 前端工程化", "skill_desc": "大型前端项目经验以及组件库开发经验", "skill_level": 80 }
   ],
   "projectList": [
     {
-      "project_name": "中铁十四局智慧管控中心",
-      "project_role": "Vue3,TypeScript,ElementPlus,sass",
-      "project_time": "2021.07 - 2022.06",
-      "project_desc": "中铁十四局智慧管控中心可对全国近半数的大盾构工程项目实现“零距离”互动。通过数字互联网，实现专家远程问诊、远程联网监控、安全实时预警、监控数据集中，智能化解决一线施工难题，为工程安全优质建造保驾护航",
-      "project_content": "1.接手项目一个月后即负责整个项目前端部分页面研发、更新维护等; 2. 使用高德地图api实现对各项目在地图上的追踪标注；腾讯云音视频/多人会议api实现1对1/1对多呼叫以及各个会议的开展；3. 编写盾构课堂模块，集成模拟考试，题集预览，学术资料，在线课堂等，采用腾讯云TUIRoomKit实现新建课堂在线讲课；4. 资料中心文件预览，采用依次加载来优化图片列表第一次渲染卡顿的情况"
+      "project_name": "数据作战室",
+      "project_role": "前端负责人",
+      "project_time": "2019.04 - 2020.06",
+      "project_desc": "面向总裁和高管以及决策 BI 的数字化经营决策和管理协同产品。提供一站式的数据化经营决策和管理协同功能，让高管高效获取决策信息，并提升管理效率。",
+      "project_content": "1. 项目从0到1的框架设计和开发 2. 产品体验精雕细琢的打磨 3. 建立稳定性保障机制。目前仍在迭代中，帮助提升高管业务决策效率"
     },
     {
-      "project_name": "大盾构管理系统",
-      "project_role": "Vue2,ElementUi,sass",
-      "project_time": "2021.07 - 2022.06",
-      "project_desc": "大盾构管理系统可对中铁十四局的大盾构项目进行全方位的管理，包括但不限于用户管理、风险管理、短信预警、会议管理、部门管理、项目管理、盾构机管理等",
-      "project_content": "1.接收项目后及负责项目前端部分的后续维护优化和后续功能模块的开发(盾构课堂，版本管理等)；2.完成公共组件的编写和公共函数的封装，不断优化业务代码实现，高内聚思想；3. domToImage插件实现报表统计页面转图片功能，更改插件内部缩放倍数解决导出图片模糊问题"
+      "project_name": "DeepInsight",
+      "project_role": "可视分析负责人",
+      "project_time": "2018.07 - 2019.04 / 2020.07 - 至今",
+      "project_desc": "DeepInsight 是蚂蚁集团自主研发的自助式 BI 数据洞察分析平台，面向企业分析人员、业务人员和开发人员，帮助蚂蚁集团实现精细化运营。",
+      "project_content": "BI 平台工具核心部分是报表制作，也就是通过数据连接、可视化配置形成图表物料之后，通过拖拽方式进行页面编排，最终形成报表页面进行发布的过程。\n1. 主导开放能力建设，拉通产品、设计建设和扩展可视化图形，提升丰富度\n2. 产品体验优化，尤其是对 ECharts 的体验顽疾进行攻克\n3. 主导可视化能力建设：业务标准化图表库建设(通用组件设计和开发经验丰富)、促进数据分析能力增强等可视化一体化建设"
     },
     {
-      "project_name": "畅享付",
-      "project_role": "Uniapp,vue2,UView2,sass",
-      "project_time": "2023.04 - 2023.08",
-      "project_desc": "公司自研项目，为加油加气站提供整体解决方案，实现油气站信息化管理；多端适配，提供包括无感支付，便捷支付加油，优惠券营销活动，发票开具，积分兑换，充值等一站式服务。分为移动端与web管理端",
-      "project_content": "1. 负责2.0版本到5.0版本的维护升级，功能迁移，线上问题解决等；2. 为多端使用，采用uniapp技术栈实现h5公众号，微信小程序，支付宝小程序多端适配以及多客户环境打包；3. 配合后台完成各个功能模块的开发如站点列表，个人中心，云闪付，社保卡支付加油等 4. 负责其后台管理畅加智慧能源系统的线上问题解决"
-    },
-    {
-      "project_name": "高速石油系统",
-      "project_role": "Uniapp,vue2,vant",
-      "project_time": "2022.09 - 至今",
-      "project_desc": "为浙江高速集团打造的一套包括但不限于,安全管理，日常督查，在线监测，风险预警，学习中心，智慧办公功能等一体化平台，具有app,公众号H5,小程序,web管理端",
-      "project_content": "1.负责将公司自研畅享付迁移至高速以及高速定制化化需求的开发,如优惠劵叠加,实名认证,站点地图等 2. 参与高速石油app的开发与维护,并利用Hbuilder打包app 3. 负责其子系统 资质证照，安全管理，学习中心，在线监测等基于vue-admin的后台系统与基于uniapp的h5页面的开发 4. 后期全权负责该系统的迭代与维护，保证该系统的稳定"
+      "project_name": "G2、G2Plot",
+      "project_role": "核心开发者",
+      "project_time": "2019 - 至今",
+      "project_desc": "G2 是基于图形语法理论的可视化渲染引擎，G2Plot 是在 G2 基础上封装的开箱即用的统计可视化图表库",
+      "project_content": "AntV 可视化建设，赋能整个蚂蚁和阿里集团统计可视化分析相关业务。负责 AntV 系列: AntV 官网、G 渲染引擎、 G2、G2Plot、ThemeSet 主题构建器等开源项目的研发工作。"
     }
   ],
-  "workList": [],
-  "aboutme": { "aboutme_desc": "\n    " },
+  "workList": [{ "work_name": "1121", "work_desc": "1212", "visit_link": "1212" }],
+  "aboutme": {
+    "aboutme_desc": "🌱 Focus on data visualization and analysis 😈 能力项：沟通协调能力、执行力\n    自驱型前端工程师，三年多大型复杂产品开发经验，负责蚂蚁集团 BI 产品 DeepInsight 的可视化建设，参与了从图表库到 BI 产品力的一体化建设，对商业智能领域的数据可视化建设有较为丰富的经验。\n    参与 AntV 团队开源项目 G2、G2Plot 的研发，目前是 G2Plot 的主要负责人。\n    "
+  },
   "theme": { "color": "#2f5785", "tagColor": "#8bc34a" }
 }

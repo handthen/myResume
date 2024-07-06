@@ -4,12 +4,13 @@
     .context {
         width: 794px;
         border-radius: 2px;
+        min-height: 900px;
         background: #fff;
-        height: 942px;
         box-sizing: border-box;
-        padding: 20px;
+        padding: 24px;
         color: black;
         margin-bottom: 60px;
+        box-shadow: 0 2px 4px 1px rgba(0, 0, 0, .15);
     }
 
 }

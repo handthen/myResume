@@ -208,7 +208,9 @@
     }
 
     const next = composePromise(foo, foo, foo)
-    next()
+    let obj = { a: 1 }
+    console.dir(Object)
+    console.dir(Object.getOwnPropertyDescriptors(obj))
 </script>
 
 </html>

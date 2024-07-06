@@ -2,6 +2,7 @@ import type { Action, Worker } from '@/typings/actionTypes'
 import { takeEvery } from 'redux-saga/effects'
 import * as effects from 'redux-saga/effects'
 import domToImage from './domToImage'
+import { message } from 'antd'
 
 export const RgbReg = /^rgb[a]?\((\d{1,3}),(\d{1,3}),(\d{1,3}),?(.*)?\)/
 export const B16Reg = /^#([a-zA-Z0-9]{2})([a-zA-Z0-9]{2})([a-zA-Z0-9]{2})([a-zA-Z0-9]{2})?/
@@ -64,7 +65,7 @@ export function getType(target: any) {
   return Object.prototype.toString.call(target).slice(8, -1)
 }
 
-export function toScale16(str: string) {
+export function toScale16(str: string): string {
   if (str[0] == '#') return str
   const match = str
     .match(RgbReg)
@@ -77,8 +78,7 @@ export function toScale16(str: string) {
       }
       return t
     }, '#')
-
-  return match
+  return match as string
 }
 
 export function toRgb(str: string) {
@@ -133,3 +133,18 @@ export function extend(source: object | Array<any>, ...args: (object | Array<any
   return { ...source }
 }
 
+export function getSearchParams(url?: string): URL['searchParams'] {
+  url = url || window.location.href
+  const searchParams = new URL(url).searchParams
+  return searchParams
+}
+
+export function copyText(text) {
+  const copyText = document.createElement('input')
+  copyText.value = text
+  copyText.select()
+  copyText.setSelectionRange(0, 99999) /* 为移动设备设置 */
+  navigator.clipboard.writeText(copyText.value).then((res) => {
+    message.success('复制成功')
+  })
+}
