@@ -33,7 +33,7 @@ export default (): React.ReactElement => {
         </div>
         <div className={style.showBlock} style={{ background: context.store.color, width: ToolConfig.showBlock * 0.85, height: ToolConfig.showBlock * 0.85 }}></div>
       </div>
-      <input value={toScale16(context.store.inputColor)} className="color-input" onChange={changeInput} />
+      <input value={toScale16(context.store.inputColor as string)} className="color-input" onChange={changeInput} readOnly={true} />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import type { Worker } from '@/typings/actionTypes'
-import { getStoreSlice, getWacthEffect } from '@/utils'
+import { getStoreSlice, getWacthEffect, extend } from '@/utils'
 import type { State } from '@/typings/storeType'
 
 const worker: Worker<State['app']> = {

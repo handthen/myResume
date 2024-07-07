@@ -14,6 +14,7 @@ export interface Context {
   setStore: Dispatch<SetStateAction<Store>>
 }
 export interface Store {
+  inputColor?: string
   opacity: number | string
   pointX: number
   pointY: number

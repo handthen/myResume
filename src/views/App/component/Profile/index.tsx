@@ -68,7 +68,9 @@ const Icons = {
 export default (props: Resume): React.ReactElement => {
   const { profile, avatar } = props
   const { name } = profile!
+  const { mode } = avatar!
   const data = useMemo(() => Object.keys(profile!), [profile])
+
   return (
     <div className="mb14 flex jbetween font-14">
       <div className="flex1">
@@ -89,7 +91,7 @@ export default (props: Resume): React.ReactElement => {
           })}
         </div>
       </div>
-      {!avatar?.hidden && avatar?.src && <img src={avatar?.src} style={avatarStyles} />}
+      {!avatar?.hidden && avatar?.src && <img src={avatar?.src} style={{ ...avatarStyles, borderRadius: mode == 2 ? '50%' : '' }} />}
     </div>
   )
 }

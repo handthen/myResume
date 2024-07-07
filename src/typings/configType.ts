@@ -6,6 +6,7 @@ export type Resume = {
     shape?: string
     size?: string
     hidden?: boolean
+    mode: number
   }
 
   /** 个人信息 */

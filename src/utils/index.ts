@@ -125,13 +125,19 @@ export function extend(source: object | Array<any>, ...args: (object | Array<any
       if (getType(sv) == 'Object' && getType(tv) == 'Object') {
         source[key] = extend(sv, tv)
       } else {
-        source[key] = tv
+        if (getType(sv) == 'Array' && getType(tv) == 'Array' && false) {
+          source[key] = sv.concat(tv)
+        } else {
+          source[key] = tv
+        }
       }
     })
   }
 
   return { ...source }
 }
+
+console.log(extend({ a: [1] }, { a: [2] }))
 
 export function getSearchParams(url?: string): URL['searchParams'] {
   url = url || window.location.href
