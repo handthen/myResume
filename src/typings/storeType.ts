@@ -1,13 +1,14 @@
-import type { Resume } from "./configType"
+import type { Resume } from './configType'
 
 export interface State {
-    counter: {
-        count: number
-    },
-    app: {
-        resumeConfig: Resume,
-        theme: {
-            [key: string]: string
-        }
+  counter: {
+    count: number
+  }
+  app: {
+    resumeConfig: Resume
+    theme: {
+      [key: string]: string
     }
+    sideOpen: boolean
+  }
 }

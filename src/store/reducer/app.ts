@@ -8,6 +8,7 @@ const worker: Worker<State['app']> = {
     theme: {
       themeColor: '#273f75',
     },
+    sideOpen: false,
   },
   effect: {
     *getResume({ callback, payload }, { put }) {
@@ -26,6 +27,10 @@ const worker: Worker<State['app']> = {
     },
   },
   reducer: {
+    set_sideOpen({ payload }, state) {
+      state.sideOpen = payload
+      return state
+    },
     set_resume_config({ payload }, state) {
       return {
         resumeConfig: payload,

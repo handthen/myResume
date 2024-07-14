@@ -3,6 +3,7 @@ import { takeEvery } from 'redux-saga/effects'
 import * as effects from 'redux-saga/effects'
 import domToImage from './domToImage'
 import { message } from 'antd'
+import { resourceUsage } from 'process'
 
 export const RgbReg = /^rgb[a]?\((\d{1,3}),(\d{1,3}),(\d{1,3}),?(.*)?\)/
 export const B16Reg = /^#([a-zA-Z0-9]{2})([a-zA-Z0-9]{2})([a-zA-Z0-9]{2})([a-zA-Z0-9]{2})?/
@@ -152,5 +153,28 @@ export function copyText(text) {
   copyText.setSelectionRange(0, 99999) /* 为移动设备设置 */
   navigator.clipboard.writeText(copyText.value).then((res) => {
     message.success('复制成功')
+  })
+}
+
+export function isWeb() {
+  const sUserAgent = navigator.userAgent
+  if (sUserAgent.indexOf('Android') > -1 || sUserAgent.indexOf('iPhone') > -1 || sUserAgent.indexOf('iPad') > -1 || sUserAgent.indexOf('iPod') > -1 || sUserAgent.indexOf('Symbian') > -1) {
+    return false
+  }
+  return true
+}
+
+export function moveLeft() {
+  if (isWeb()) return
+  const start = {
+    x: 0,
+    y: 0,
+  }
+
+  document.addEventListener('mousemove', function (e) {
+    const start = {
+      x: e.clientX,
+      y: e.clientY,
+    }
   })
 }

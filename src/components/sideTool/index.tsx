@@ -1,11 +1,18 @@
 import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Upload, message } from 'antd'
-import { print, copyText } from '@/utils'
+import { Button, Upload, message, Form } from 'antd'
+import { print, copyText, isWeb } from '@/utils'
 import ColorPlan from '@/components/colorPlan'
 import { Dropdown, ConfigProvider, Drawer, Radio, Collapse } from 'antd'
+import { LeftCircleOutlined, RightCircleOutlined } from '@ant-design/icons'
 import type { State } from '@/typings/storeType'
 import AcatarPlan from './component/AvatarPlan'
+import ProfilePlan from './component/ProfilePlan'
+import EducationPlan from './component/EducationPlan'
+import AboutmePlan from './component/AboutmePlan'
+import SkillPlan from './component/SkillPlan'
+import WorkPlan from './component/workPlan'
+import Style from './component/index.module.scss'
 
 const styles: any = {
   tool: {
@@ -15,10 +22,13 @@ const styles: any = {
   },
 }
 
+const planWidth = isWeb() ? 400 : '80%'
+
 export default (): React.ReactElement => {
   const dispatch = useDispatch()
   const editRef = useRef<any>()
   const theme = useSelector<State, State['app']['theme']>((state) => state.app.theme)
+  const sideOpen = useSelector<State, State['app']['sideOpen']>((state) => state.app.sideOpen)
   const resumeConfig = useSelector<State, State['app']['resumeConfig']>((state) => state.app.resumeConfig)
   function importConfigFile({ file }) {
     if (!window.FileReader) {
@@ -60,8 +70,8 @@ export default (): React.ReactElement => {
     editRef.current.setOpen(true)
   }
 
-  return (
-    <div style={styles.tool} className="flex-column no-print">
+  const Side = () => (
+    <>
       <Upload accept=".json" showUploadList={false} customRequest={importConfigFile}>
         <Button type="primary">导入配置</Button>
       </Upload>
@@ -80,6 +90,60 @@ export default (): React.ReactElement => {
           色板
         </Button>
       </Dropdown>
+    </>
+  )
+
+  return (
+    <div style={styles.tool} className={'flex-column no-print side'}>
+      <div className="side-web flex-column">
+        <Upload accept=".json" showUploadList={false} customRequest={importConfigFile}>
+          <Button type="primary">导入配置</Button>
+        </Upload>
+        <Button className="mt10" type="primary" onClick={editResumn}>
+          修改配置
+        </Button>
+        <Button className="mt10" type="primary" onClick={copyText.bind(null, JSON.stringify(resumeConfig))}>
+          复制配置
+        </Button>
+        <Button className="mt10" type="primary" onClick={print}>
+          打印pdf
+        </Button>
+
+        <Dropdown dropdownRender={() => <ColorPlan width={220} height={160} defaultColor={theme.themeColor} onChange={onChange} />}>
+          <Button className="mt10" type="primary">
+            色板
+          </Button>
+        </Dropdown>
+      </div>
+      <Drawer
+        open={sideOpen}
+        onClose={() => {
+          dispatch({ type: 'app/set_sideOpen', payload: false })
+        }}
+        maskClosable={true}
+        width={120}
+      >
+        <div className="flex-column">
+          <Upload accept=".json" showUploadList={false} customRequest={importConfigFile}>
+            <Button type="primary">导入配置</Button>
+          </Upload>
+          <Button className="mt10" type="primary" onClick={editResumn}>
+            修改配置
+          </Button>
+          <Button className="mt10" type="primary" onClick={copyText.bind(null, JSON.stringify(resumeConfig))}>
+            复制配置
+          </Button>
+          <Button className="mt10" type="primary" onClick={print}>
+            打印pdf
+          </Button>
+
+          <Dropdown dropdownRender={() => <ColorPlan width={220} height={160} defaultColor={theme.themeColor} onChange={onChange} />}>
+            <Button className="mt10" type="primary">
+              色板
+            </Button>
+          </Dropdown>
+        </div>
+      </Drawer>
       <EditDrawer ref={editRef} />
     </div>
   )
@@ -107,8 +171,9 @@ const EditDrawer = forwardRef(function (props, ref): React.ReactElement {
     </Radio.Group>
   )
   return (
-    <Drawer extra={extra} closeIcon={false} open={open} maskClosable={true} onClose={onClose} width={450}>
+    <Drawer extra={extra} open={open} maskClosable={true} onClose={onClose} width={planWidth}>
       {activeTab == 1 && <Active1 />}
+      {activeTab == 2 && <Active2 />}
     </Drawer>
   )
 })
@@ -116,13 +181,15 @@ const EditDrawer = forwardRef(function (props, ref): React.ReactElement {
 function Active1() {
   const { Panel } = Collapse
   const dispatch = useDispatch()
+  const resumeConfig = useSelector<State, State['app']['resumeConfig']>((state) => state.app.resumeConfig)
 
-  function onChange() {}
-
-  function setResumn(val, key) {
-    const keys = key.split('.')
-    const targte = {}
+  function setResumn(val: any, key: string, isArray?: boolean) {
+    let targte = {}
     let currentTagger = targte
+    // if (isArray && Array.isArray(resumeConfig[key])) {
+    //   val = resumeConfig[key].concat(val)
+    // }
+    const keys = key.split('.')
     for (let i = 0; i < keys.length; i++) {
       const v = keys[i]
       if (keys.length == i + 1) {
@@ -132,22 +199,43 @@ function Active1() {
       }
       currentTagger = targte[v]
     }
+    console.log(targte, '--targte')
     dispatch({
       type: 'app/set_resume_config',
       payload: targte,
     })
   }
+  const baseProp = {
+    setResumn,
+    planWidth,
+  }
   return (
-    <Collapse onChange={onChange} ghost={true} className="collapse">
-      <Panel header="头像设置" key="1">
-        <AcatarPlan setResumn={setResumn} />
-      </Panel>
-      <Panel header="个人信息" key="2"></Panel>
-      <Panel header="教育背景" key="3"></Panel>
-      <Panel header="自我介绍" key="4"></Panel>
-      <Panel header="个人作品" key="5"></Panel>
-      <Panel header="个人技能" key="6"></Panel>
-      <Panel header="工作经历" key="7"></Panel>
-    </Collapse>
+    <Form labelCol={{ span: 6 }}>
+      <Collapse ghost={true} className="collapse" accordion>
+        <Panel header="头像设置" key="1">
+          <AcatarPlan {...baseProp} avatar={resumeConfig.avatar} />
+        </Panel>
+        <Panel header="个人信息" key="2">
+          <ProfilePlan {...baseProp} profile={resumeConfig.profile} />
+        </Panel>
+        <Panel header="教育背景" key="3">
+          <EducationPlan {...baseProp} educationList={resumeConfig.educationList} />
+        </Panel>
+        <Panel header="自我介绍" key="4">
+          <AboutmePlan {...baseProp} aboutme={resumeConfig.aboutme} />
+        </Panel>
+        {/* <Panel header="个人作品" key="5"></Panel> */}
+        <Panel header="个人技能" key="6">
+          <SkillPlan {...baseProp} skillList={resumeConfig.skillList} />
+        </Panel>
+        <Panel header="工作经历" key="7">
+          <WorkPlan {...baseProp} workExpList={resumeConfig.workExpList} />
+        </Panel>
+      </Collapse>
+    </Form>
   )
+}
+
+function Active2() {
+  return <div className="mt40 flex jcenter">暂无模板</div>
 }

@@ -1,0 +1,57 @@
+    .add-btn{
+        color: #00000073;
+        text-align: center;
+        padding: 8px;
+        border-radius: 3px;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+    .add-btn:hover{
+        background-color: #f2f2f2;
+    }
+    .education-item{
+        background-color: #f2f2f2;
+        border-radius: 3px;
+        font-size: 12px;
+        padding: 4px;
+        margin-bottom: 12px;
+        position: relative;
+        .close-icon{
+            position: absolute;
+            right: 2px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            display: none;
+        }
+    }
+    .education-item:hover{
+        .close-icon{
+            display: inline-block;
+        }
+    }
+
+    .side{
+        .side-open-icon{
+            position: fixed;
+            font-size: 22px;
+            font-weight: 700;
+            right: 0;
+            top: 40%;
+            z-index: 9999;
+            display: none;
+            color: var(--themeColor);
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .side{
+          .side-web{
+            display: none !important;
+          }
+            .side-open-icon{
+              display: block !important;
+          }
+        }
+       
+    }

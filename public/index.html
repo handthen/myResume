@@ -193,29 +193,37 @@
 
 </script>
 <script>
-    const composePromise = (...fn) => {
-        const first = fn.pop()
-        return (...arg) => {
-            return fn.reverse().reduce(async (a, b) => {
-                const result = await a
-                return b(result)
-            }, Promise.resolve(first(...arg)))
+
+    const obj = {
+        a: 1,
+        b: {
+            age: {
+                name: '456'
+            }
         }
     }
 
-    function foo() {
-        return new Promise(r => setTimeout(r, 2000))
+    function reactive(obj) {
+        const proxy = new Proxy(obj, {
+            get(target, key, self) {
+                const t = Reflect.get(target, key, self)
+                console.log(key)
+                if (typeof t === 'object') {
+                    return reactive(target[key])
+                }
+                return t
+            }
+        })
+        return proxy
     }
 
-    const next = composePromise(foo, foo, foo)
-    let obj = { a: 1 }
-    console.dir(Object)
-    console.dir(Object.getOwnPropertyDescriptors(obj))
 
-    let key = 'a.b'
-    let val = 1
+    const proxy = reactive(obj)
 
-   
+
+    console.log(proxy.b.age.name)
+
+
 
 
 </script>

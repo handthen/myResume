@@ -56,7 +56,7 @@ export type Resume = {
   workExpList?: Array<{
     company_name: string
     department_name: string
-    work_time?: [string | undefined, string | number]
+    work_time: [string | undefined, string | number]
     work_desc: string
   }>
 

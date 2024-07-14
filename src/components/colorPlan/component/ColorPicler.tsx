@@ -66,6 +66,8 @@ export default (props: Props): React.ReactElement => {
     mousedown(e)
   }
   function mousedown(e: MouseEvent) {
+    // e.preventDefault()
+    // e.stopPropagation()
     const { clientX, clientY } = e
     setPosition((state) => {
       state.oldX = state.x
@@ -77,6 +79,8 @@ export default (props: Props): React.ReactElement => {
   }
 
   function mousemove(e: MouseEvent) {
+    e.preventDefault()
+    e.stopPropagation()
     const { clientX, clientY } = e
     setPosition((state) => {
       const { targetX, targetY, oldX, oldY } = state
@@ -99,6 +103,8 @@ export default (props: Props): React.ReactElement => {
     })
   }
   function mouseup(e: MouseEvent) {
+    e.preventDefault()
+    e.stopPropagation()
     document.removeEventListener('mouseup', mouseup)
     document.removeEventListener('mousemove', mousemove)
   }

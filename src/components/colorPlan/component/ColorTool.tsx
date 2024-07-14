@@ -59,6 +59,7 @@ function SilderColor(): React.ReactElement {
   }, [])
 
   function mousedown(e: MouseEvent) {
+    e.preventDefault()
     const { clientX, offsetX, target } = e
     const clientWidth = (target as HTMLElement)!.clientWidth
     const ranger = offsetX / clientWidth
@@ -167,6 +168,8 @@ function SilderOpacity(): React.ReactElement {
   }, [store.color])
 
   function mousedown(e: MouseEvent) {
+    e.preventDefault()
+    e.stopPropagation()
     const { clientX, offsetX, target } = e
     const clientWidth = (target as HTMLElement)!.clientWidth
     const ranger = offsetX / clientWidth
@@ -185,6 +188,8 @@ function SilderOpacity(): React.ReactElement {
     document.addEventListener('mousemove', mousemove)
   }
   function mousemove(e: MouseEvent) {
+    e.preventDefault()
+    e.stopPropagation()
     const { clientX, target } = e
     setPosition((state) => {
       const { targetX, oldX } = state
@@ -210,6 +215,8 @@ function SilderOpacity(): React.ReactElement {
   }
 
   function mouseup(e: MouseEvent) {
+    e.preventDefault()
+    e.stopPropagation()
     document.removeEventListener('mouseup', mouseup)
     document.removeEventListener('mousemove', mousemove)
   }

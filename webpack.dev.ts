@@ -1,9 +1,9 @@
-const ESLintPlugin = require('eslint-webpack-plugin');
-const webpack = require('webpack');
-const { merge } = require('webpack-merge');
-const baseConfig = require('./webpack.config.ts');
-const Friendly = require('@nuxt/friendly-errors-webpack-plugin');
-const path = require('path');
+const ESLintPlugin = require('eslint-webpack-plugin')
+const webpack = require('webpack')
+const { merge } = require('webpack-merge')
+const baseConfig = require('./webpack.config.ts')
+const Friendly = require('@nuxt/friendly-errors-webpack-plugin')
+const path = require('path')
 module.exports = merge(
   {
     mode: 'development',
@@ -62,7 +62,12 @@ module.exports = merge(
     },
     plugins: [
       new ESLintPlugin(),
-      new webpack.HotModuleReplacementPlugin(), //热更新
+      new webpack.HotModuleReplacementPlugin({
+        exclude: [
+          /\.svg$/,
+          /\.tsx$/, // 排除所有SVG文件的HMR
+        ],
+      }), //热更新
       // new Friendly({
       //   compilationSuccessInfo: {
       //     messages: [`${process.env.NODE_ENV}  localhost: http://localhost:${process.env.PORT}`, process.env.L_IP_ ? `                        http://${process.env.L_IP_}:${process.env.PORT}` : ''],
@@ -71,4 +76,4 @@ module.exports = merge(
     ],
   },
   baseConfig
-);
+)

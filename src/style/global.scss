@@ -74,6 +74,12 @@ body {
 .cb4{
     color: #999;
 }
+.t-ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
 
 .ant-drawer-body{
   padding: 10px !important;
@@ -154,7 +160,10 @@ body {
     }
 
     .no-print {
-        display: none;
+        display: none !important;
+    }
+    .ant-drawer{
+        display: none !important;
     }
 
     body {
