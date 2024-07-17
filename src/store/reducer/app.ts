@@ -28,8 +28,9 @@ const worker: Worker<State['app']> = {
   },
   reducer: {
     set_sideOpen({ payload }, state) {
-      state.sideOpen = payload
-      return state
+      return {
+        sideOpen: payload,
+      }
     },
     set_resume_config({ payload }, state) {
       return {

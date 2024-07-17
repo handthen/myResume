@@ -23,6 +23,8 @@ export default function (props: props) {
   function submitSave(values) {
     values.edu_time = values.edu_time.map((v) => moment(v).format('YYYY/MM/DD'))
     setResumn([...(educationList as []), { ...values }], 'educationList', true)
+    onClose()
+    form.resetFields()
   }
   function removeItem(item) {
     setResumn(
@@ -48,7 +50,7 @@ export default function (props: props) {
       <div className={styles['add-btn']} onClick={setOpen.bind(this, true)}>
         添加
       </div>
-      <Drawer title="教育经历"  open={open} maskClosable={true} onClose={onClose} width={planWidth}>
+      <Drawer title="教育经历" open={open} maskClosable={true} onClose={onClose} width={planWidth}>
         <Form labelCol={{ span: 6 }} form={form} name="educationList" onFinish={submitSave} autoComplete="off">
           <Form.Item label="学校" name="school" rules={[{ message: '请输入学校', required: true }]}>
             <Input placeholder="学校" />

@@ -19,6 +19,8 @@ export default function (props: props) {
   }
   function submitSave(values) {
     setResumn([...(skillList as []), { ...values }], 'skillList', true)
+    onClose()
+    form.resetFields()
   }
   function removeItem(item) {
     setResumn(
