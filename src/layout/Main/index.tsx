@@ -9,7 +9,7 @@ export default ({ children }): React.ReactElement => {
             <div id="print-body" className={styles.context}>
                 {children}
             </div>
-            <SideTool />
+            {/* <SideTool /> */}
         </div>
 
     )

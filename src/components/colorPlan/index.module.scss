@@ -10,6 +10,13 @@
         color: transparent;
     }
 }
+:global(.flex){
+    display: flex;
+}
+:global(.jbetween){
+justify-content: space-between;
+}
+
 
 .canvasBox {
     position: relative;
