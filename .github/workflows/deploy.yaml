@@ -17,4 +17,4 @@ jobs:
                git remote add origin https://github.com/handthen/web.git
                git push -f origin master
              env:
-               GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+               GITHUB_TOKEN: ${{ secrets.WEB_SECRET }}
