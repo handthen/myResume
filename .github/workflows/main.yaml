@@ -39,7 +39,6 @@ jobs:
           branch: master
           # 推送哪个文件里的内容
           folder: dist
-
           # 是否强制提交
           force: true
           # 提交时候的 commit 消息
