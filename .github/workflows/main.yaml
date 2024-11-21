@@ -31,14 +31,10 @@ jobs:
         run: |
           npm run build
 
-      - name: ------List contents of the build directory------
-        run: ls -R dist
-
       - name: -------Deploy-------
         # 使用JamesIves/github-pages-deploy-action 库
         uses: JamesIves/github-pages-deploy-action@v4.3.4
         with:
-          token: ${{ secrets.WEB }}
           # 推送到哪个分支上
           branch: master
           # 推送哪个文件里的内容
@@ -51,4 +47,4 @@ jobs:
           # 提交到哪个仓库的，默认是本仓库，所以这里也可以忽略不写
           repository-name: handthen/web
         env:
-          GITHUB_TOKEN: ${{ secrets.WEB }}
+          GITHUB_TOKEN: ${{ secrets.WEB_SECRET }}
