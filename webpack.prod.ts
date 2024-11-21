@@ -39,7 +39,7 @@ module.exports = merge(baseConfig, {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[local]',
+                localIdentName: '[local]-[hash:5]',
               },
             },
           },
@@ -119,7 +119,7 @@ module.exports = merge(baseConfig, {
           // },
           name(module, chunks = []) {
             const hash = cryptoUtil.createHash('sha1')
-            hash.update(chunks.reduce((chunkStr, chunk) => (chunkStr += chunk.name), ''))
+            hash.update(chunks.reduce((chunkStr, chunk:any) => (chunkStr += chunk.name), ''))
             return `shared.${hash.digest('hex').slice(0, 8)}${isModuleCSS(module) ? '.css' : ''}`
           },
           priority: 1,

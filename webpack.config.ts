@@ -3,7 +3,6 @@ module.exports = (function () {
   const path = require('path')
   const webpack = require('webpack')
   const HtmlWebpackPlugin = require('html-webpack-plugin')
-  const { CleanWebpackPlugin } = require('clean-webpack-plugin')
   const webpackBar = require('webpackbar')
 
   function getDevConfig() {
@@ -37,8 +36,9 @@ module.exports = (function () {
     entry: __dirname + '/src/main.tsx', //入口文件
     output: {
       //出口
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'dist/resumn',),
       filename: 'js/[name].[contenthash:5].js',
+      clean:true
       // assetModuleFilename: "static/images/[name].[contenthash:5][ext]",
     },
     //loader
