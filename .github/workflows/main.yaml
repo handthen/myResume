@@ -12,7 +12,7 @@ jobs:
     # 运行器
     runs-on: ubuntu-latest
     permissions:
-      contents: write 
+      contents: read
     # 提交信息包含deploy 时触发
     if: contains(github.event.head_commit.message, 'deploy')
     steps:
