@@ -37,7 +37,7 @@ jobs:
         # 使用JamesIves/github-pages-deploy-action 库
         uses: JamesIves/github-pages-deploy-action@v4.3.4
         with:
-          token: ${{ secrets.MY_TOKEN }}
+          token: ${{ secrets.RESUMN }}
           # 推送到哪个分支上
           branch: master
           # 推送哪个文件里的内容
