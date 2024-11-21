@@ -49,4 +49,4 @@ jobs:
           # 提交时候的 commit 消息
           commit-message: gh-deploy
           # 提交到哪个仓库的，默认是本仓库，所以这里也可以忽略不写
-          repository-name: https://github.com/handthen/web.git
+          repository-name: handthen/web
