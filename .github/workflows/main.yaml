@@ -39,16 +39,13 @@ jobs:
         with:
           token: ${{ secrets.MY_TOKEN }}
           # 推送到哪个分支上
-          branch: gh-page
+          branch: master
           # 推送哪个文件里的内容
           folder: dist
-          # 推送文件
-          files: |
-            dist/*
-            .github/*
+      
           # 是否强制提交
           force: true
           # 提交时候的 commit 消息
           commit-message: gh-deploy
           # 提交到哪个仓库的，默认是本仓库，所以这里也可以忽略不写
-        #    repository-name: EralChen/simple-vuesri
+          repository-name: https://github.com/handthen/web.git
