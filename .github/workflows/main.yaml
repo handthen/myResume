@@ -12,7 +12,7 @@ jobs:
     # 运行器
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     # 提交信息包含deploy 时触发
     if: contains(github.event.head_commit.message, 'deploy')
     steps:
@@ -32,13 +32,19 @@ jobs:
       - name: -------Build-------
         run: |
           npm run build
+
+      - name: Set git user
+        run: |
+            git config --global user.name "wb"
+            git config --global user.email "1470607843@qq.com"
+
       - name: -------Deploy-------
         # 使用JamesIves/github-pages-deploy-action 库
         uses: JamesIves/github-pages-deploy-action@v4.3.4
         with:
           token: ${{ secrets.WEB_SECRET }}
           # 推送到哪个分支上
-          branch: gh-page
+          branch: master
           # 推送哪个文件里的内容
           folder: dist
           # 是否强制提交
@@ -46,6 +52,6 @@ jobs:
           # 提交时候的 commit 消息
           commit-message: gh-deploy
           # 提交到哪个仓库的，默认是本仓库，所以这里也可以忽略不写
-          # repository-name: handthen/web
+          repository-name: handthen/web
         env:
           GITHUB_TOKEN: ${{ secrets.WEB_SECRET }}
