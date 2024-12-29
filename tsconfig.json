@@ -37,5 +37,5 @@
         "dist",
         "webpack.*.ts"
     ],
-    "include": ["src", "dist/js"]
+    "include": ["src"]
 }
