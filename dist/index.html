@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+    <meta charset=UTF-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>简历</title>
+    <link rel=icon href=favicon.ico>
+    <script defer=defer src=js/runtime.5210a.js></script>
+    <script defer=defer src=js/main.88011.js></script>
+</head>
+<style></style>
+
+<body>
+    <div id=app>
+        <div class=item></div>
+        <div class=item></div>
+        <div class="item basis"></div>
+    </div>
+</body>
+<script src=../dist/js/main.d905c.js></script>
+<script>console.log(window)
+    class List {
+        state = {
+            data: [], // 总的数据
+            renderList: [], // 当前渲染数据
+            viewHeight: 0, // 容器高度
+            maxCount: 0, // 容器最大渲染量
+            itemHeight: 0, // 每个子项高度
+            offsetItem: 3 // 每页最大渲染个数会增加 offsetItem 个，防止滚动过快有留白
+        }
+        constructor(config) {
+            this.startIndex = 0 // 当前渲染开始下标
+            this.offset = 0 // 偏移量 每次增加/移除的dom个数
+            this.endIndex = 0 // 当前渲染结束下标
+            this._getType = target => Object.prototype.toString.call(target).slice(8, -1)
+            this.cacheDom = new Map()
+            this.init(config)
+        }
+
+        init(config) {
+            const { data, viewHeight } = config
+            this._config = config
+            this.state.data = data || []
+            this.initContainer(config)
+            const container = this.cacheDom.get('container')
+            const list = this.cacheDom.get('list')
+            console.log(list)
+            if (!list || !container) return
+            container.addEventListener('scroll', this.scrollEvent.bind(this))
+            if (getComputedStyle(container).height == '0px' || !getComputedStyle(container).height) {
+                container.style.height = window.innerHeight + 'px'
+            }
+            this.state.viewHeight = viewHeight || container.offsetHeight
+            if (this.state.itemHeight) {
+                this.state.maxCount = Math.ceil(this.state.viewHeight / this.state.itemHeight) + this.state.offsetItem
+                this.startIndex = 0
+                /** maxCount是个数 endIndex是下标 所以 -1 */
+                this.endIndex = this.state.maxCount - 1
+                requestAnimationFrame(this.render)
+            } else {
+                this.getItemHeight()
+            }
+        }
+        clear() {
+            this.state = {
+                data: [],
+                renderList: [],
+                viewHeight: 0,
+                maxCount: 0,
+                itemHeight: 0
+            }
+            this.startIndex = 0
+            this.endIndex = 0
+            this.computedScrollStyle()
+            this.cacheDom.clear()
+            console.log('-----')
+        }
+
+        scrollEvent(e) {
+            const { scrollTop } = e.target
+            const { offsetItem } = this.state
+            const startIndex = Math.floor(scrollTop / this.state.itemHeight)
+            if (startIndex != this.startIndex) {
+                this.startIndex = startIndex
+                /** maxCount是个数 endIndex是下标 所以 -1 */
+                const endIndex = this.startIndex + this.state.maxCount - 1
+                this.endIndex = endIndex
+                this.render()
+            }
+        }
+
+        computedScrollStyle() {
+            const { data, itemHeight } = this.state
+            const list = this.cacheDom.get('list')
+            /** 模拟滚动条 */
+            this.scrollStyle = {
+                height: `${data.length * itemHeight - this.startIndex * itemHeight}px`,
+                transform: `translate3d(0, ${this.startIndex * itemHeight}px, 0)`
+            }
+            list.style.height = this.scrollStyle.height
+            list.style.transform = this.scrollStyle.transform
+        }
+
+        initContainer(config) {
+            const { containerBox, listBox, itemHeight, margin } = config
+            if (!listBox || !containerBox) {
+                throw new Error('listBox and containerBox is required')
+            }
+            const containerType = this._getType(containerBox)
+            const listType = this._getType(listBox)
+            if (itemHeight && this._getType(+itemHeight) == 'Number') {
+                this.state.itemHeight = +itemHeight
+            }
+            if (margin && this._getType(+margin) == 'Number') {
+                this.state.itemHeight += +margin
+            }
+            if (containerType == 'String') {
+                this.cacheDom.set('container', document.querySelector(containerBox))
+            }
+            if (containerType.indexOf('Element') != -1) {
+                this.cacheDom.set('container', containerBox)
+            }
+
+            if (listType == 'String') {
+                this.cacheDom.set('list', document.querySelector(listBox))
+            }
+            if (listType.indexOf('Element') != -1) {
+                this.cacheDom.set('list', listBox)
+            }
+        }
+        getItemHeight() {
+            const viewHeight = this.state.viewHeight
+            if (!this.state.itemHeight) {
+
+                const list = this.cacheDom.get('list')
+
+                if (!list) return this.clear()
+                this.state.itemHeight = list.firstElementChild?.offsetHeight ?? 0
+                let numH = 0
+                let margin = 0
+                let h = 0
+
+                while (numH <= viewHeight) {
+                    this.endIndex = this.endIndex + 2
+                    this.render()
+                    const children = Array.from(list.children).slice(this.endIndex - 2)
+                    if (!children.length) return
+                    for (let i = 0; i < children.length; i++) {
+                        const item = children[i]
+                        if (!margin) {
+                            const styles = getComputedStyle(item)
+                            margin = Math.max(styles.marginBottom?.replace('px', ''), styles.marginTop?.replace('px', '')) || 0
+                        }
+                        if (!h) {
+                            h = item.offsetHeight || 0
+                        }
+                        numH += +h
+                        numH += +margin
+                    }
+
+                }
+                /** 子项偏移量 多渲染 offsetItem 个  */
+                if (this.state.offsetItem) {
+                    this.offset = this.state.offsetItem
+                    this.render()
+                }
+                this.endIndex = this.endIndex + this.state.offsetItem - 1
+                this.state.itemHeight = list.firstElementChild?.offsetHeight ?? 0
+                this.state.maxCount = Math.ceil(numH / (this.state.itemHeight + +margin)) + this.state.offsetItem
+                this.computedScrollStyle()
+                console.log(this.endIndex, this.startIndex, this.state.maxCount)
+            }
+        }
+
+        render() {
+            const list = this.cacheDom.get('list')
+            const { render, template } = this._config
+            if (list) {
+                this.computedScrollStyle()
+                this.state.renderList = this.state.data.slice(this.startIndex, this.endIndex)
+                console.log(this.state.renderList)
+                if (typeof render == 'function') {
+                    render(this.state.renderList, this.scrollStyle)
+                }
+                list.innerHTML = this.state.renderList.map(v => `<div class='item'>${v}</div>`).join('')
+            } else {
+                this.clear()
+            }
+        }
+    }</script>
+<script>const obj = {
+        a: 1,
+        b: {
+            age: {
+                name: '456'
+            }
+        }
+    }
+
+    function reactive(obj) {
+        const proxy = new Proxy(obj, {
+            get(target, key, self) {
+                const t = Reflect.get(target, key, self)
+                console.log(key)
+                if (typeof t === 'object') {
+                    return reactive(target[key])
+                }
+                return t
+            }
+        })
+        return proxy
+    }
+
+
+    const proxy = reactive(obj)
+
+
+    console.log(proxy.b.age.name)</script>
+
+</html>
