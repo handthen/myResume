@@ -52,17 +52,7 @@ module.exports = merge(baseConfig, {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html', //打包后文件名
-      template: './public/index.html',
-      favicon: './public/favicon.ico',
-      title: 'resumn',
-      minify: {
-        removeComments: true, //移出注释
-        collapseWhitespace: true, //删除空白符合换行符
-        removeAttributeQuotes: true, //移除属性引号
-      },
-    }),
+
     new ESLintPlugin(),
     new webpack.HotModuleReplacementPlugin({
       exclude: [
