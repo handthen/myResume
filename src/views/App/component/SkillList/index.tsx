@@ -12,7 +12,7 @@ export default (props: Resume): React.ReactElement => {
       {skillList?.map((v, i) => (
         <div key={i} className="mb6">
           <span className="font-14 cb1">{i + 1}.</span>
-          <span className="font-14 cb1">{v.skill_name}，</span>
+          <span className="font-14 cb1">{v.skill_name}</span>
           <span className="font-14 cb1">{v.skill_desc}</span>
         </div>
       ))}

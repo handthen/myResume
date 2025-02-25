@@ -31,11 +31,5 @@
             "@": ["src"],
         }
     },
-    "exclude": [
-        "node_modules",
-        "config",
-        "dist",
-        "webpack.*.ts"
-    ],
-    "include": ["src"]
+    "include": ["./src/**/*"]
 }

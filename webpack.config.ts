@@ -101,7 +101,7 @@ module.exports = (function () {
         filename: 'index.html', //打包后文件名
         template: './public/index.html',
         favicon: './public/favicon.ico',
-        title: '简历',
+        title: 'resumn',
         minify: {
           removeComments: true, //移出注释
           collapseWhitespace: true, //删除空白符合换行符
