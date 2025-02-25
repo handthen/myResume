@@ -45,7 +45,7 @@ jobs:
         with:
           token: ${{ secrets.WEB_SECRET }}
           # 推送到哪个分支上
-          branch: master
+          branch: gh-page
           # 推送哪个文件里的内容
           folder: dist
           # 是否强制提交
