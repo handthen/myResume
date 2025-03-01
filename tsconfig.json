@@ -18,6 +18,8 @@
         "noImplicitThis": false,
         "strictNullChecks": true,
         "moduleResolution": "node",
+        "sourceRoot": "./",
+        "mapRoot": "./",
         "typeRoots": [
             "node_modules/@types"
         ],
@@ -27,9 +29,15 @@
         "emitDecoratorMetadata": true,
         "baseUrl": ".",
         "paths": {
-            "@/*": ["src/*"],
-            "@": ["src"],
+            "@/*": [
+                "src/*"
+            ],
+            "@": [
+                "src"
+            ],
         }
     },
-    "include": ["./src/**/*"]
+    "include": [
+        "./src/**/*"
+    ]
 }

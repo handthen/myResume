@@ -7,7 +7,6 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = merge(baseConfig, {
   mode: 'development',
-  entry: __dirname + '/src/main.tsx', //入口文件
   devServer: {
     historyApiFallback: true,
     compress: true, //gzip压缩
@@ -16,15 +15,6 @@ module.exports = merge(baseConfig, {
     client: {
       progress: true,
     },
-    // open: true,
-    // proxy: {
-    //     "/api": {
-    //         target: "https://image.baidu.com",
-    //         // target:'https://i.maoyan.com',
-    //         changeOrigin: true,
-    //         pathRewrite: { "^/api": "" },
-    //     },
-    // }
   },
   module: {
     rules: [
@@ -62,17 +52,7 @@ module.exports = merge(baseConfig, {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html', //打包后文件名
-      template: './public/index.html',
-      favicon: './public/favicon.ico',
-      title: '简历',
-      minify: {
-        removeComments: true, //移出注释
-        collapseWhitespace: true, //删除空白符合换行符
-        removeAttributeQuotes: true, //移除属性引号
-      },
-    }),
+
     new ESLintPlugin(),
     // new Friendly({
     //   compilationSuccessInfo: {

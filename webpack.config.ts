@@ -36,7 +36,7 @@ module.exports = (function () {
     entry: __dirname + '/src/main.tsx', //入口文件
     output: {
       //出口
-      path: path.resolve(__dirname, 'dist/resumn'),
+      path: path.resolve(__dirname, 'dist',),
       filename: 'js/[name].[contenthash:5].js',
       clean: true,
       // assetModuleFilename: "static/images/[name].[contenthash:5][ext]",

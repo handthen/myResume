@@ -9,9 +9,8 @@ const ColorPlan = (props: Props): React.ReactElement => {
   return (
     <Provider {...props}>
       <div className={style.plan}>
-        {/* <ColorPicler onChange={props.onChange} />
-        <ColorTool /> */}
-        123
+        <ColorPicler onChange={props.onChange} />
+        <ColorTool />
       </div>
     </Provider>
   )
