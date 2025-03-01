@@ -95,7 +95,7 @@ export default (): React.ReactElement => {
   )
 
   return (
-    <div style={styles.tool} className={'flex-column no-print side'}>
+    <div style={styles.tool} className={'flex-column no-print xs-hidden'}>
       <div className="side-web flex-column">
         <Upload accept=".json" showUploadList={false} customRequest={importConfigFile}>
           <Button type="primary">导入配置</Button>

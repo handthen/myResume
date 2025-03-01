@@ -36,9 +36,10 @@ module.exports = (function () {
     entry: __dirname + '/src/main.tsx', //入口文件
     output: {
       //出口
-      path: path.resolve(__dirname, 'dist',),
+      path: path.resolve(__dirname, 'dist'),
       filename: 'js/[name].[contenthash:5].js',
       clean: true,
+      publicPath: './',
       // assetModuleFilename: "static/images/[name].[contenthash:5][ext]",
     },
     //loader

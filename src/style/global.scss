@@ -156,6 +156,12 @@ body {
     }
 }
 
+@media screen and (max-width:768px) {
+    .xs-hidden{
+        display: none !important;
+    }
+}
+
 @media print {
     @page {
         size: A4;
