@@ -36,9 +36,9 @@ module.exports = (function () {
     entry: __dirname + '/src/main.tsx', //入口文件
     output: {
       //出口
-      path: path.resolve(__dirname, 'dist/resumn',),
+      path: path.resolve(__dirname, 'dist/resumn'),
       filename: 'js/[name].[contenthash:5].js',
-      clean:true
+      clean: true,
       // assetModuleFilename: "static/images/[name].[contenthash:5][ext]",
     },
     //loader
@@ -77,7 +77,7 @@ module.exports = (function () {
     //插件
     plugins: [
       new webpackBar({
-        name: '咻咻咻咻-------',
+        name: '嘤嘤嘤-------',
         color: 'green',
         basic: false,
         // reports:[]//自定义
@@ -88,6 +88,7 @@ module.exports = (function () {
       // }),
       new webpack.DefinePlugin({
         NODE_ENV: JSON.stringify(process.env.NODE_ENV), //`'${process.env.NODE_ENV}'`
+        BASE_URL: '/api',
       }),
       // @ts-ignore
 
@@ -101,7 +102,7 @@ module.exports = (function () {
         filename: 'index.html', //打包后文件名
         template: './public/index.html',
         favicon: './public/favicon.ico',
-        title: '简历',
+        title: 'resumn',
         minify: {
           removeComments: true, //移出注释
           collapseWhitespace: true, //删除空白符合换行符

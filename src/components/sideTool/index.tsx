@@ -12,6 +12,7 @@ import EducationPlan from './component/EducationPlan'
 import AboutmePlan from './component/AboutmePlan'
 import SkillPlan from './component/SkillPlan'
 import WorkPlan from './component/workPlan'
+import ProjectPlan from './component/ProjectPlan'
 import Style from './component/index.module.scss'
 
 const styles: any = {
@@ -230,6 +231,9 @@ function Active1() {
         </Panel>
         <Panel header="工作经历" key="7">
           <WorkPlan {...baseProp} workExpList={resumeConfig.workExpList} />
+        </Panel>
+        <Panel header="项目经历" key="8">
+          <ProjectPlan {...baseProp} projectList={resumeConfig.projectList} />
         </Panel>
       </Collapse>
     </Form>

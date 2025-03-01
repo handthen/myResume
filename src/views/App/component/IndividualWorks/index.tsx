@@ -12,11 +12,9 @@ export default function (props: Resume) {
       <div>
         <div>
           <span className="font-14 mr8 fw700">作品名称</span>
-          <a className="font-12" href={'h'} target="_blank" rel="noreferrer">
-            了解
-          </a>
+          <a className="font-12" href={'h'} target="_blank" rel="noreferrer"></a>
         </div>
-        <div className="t-line font-14">描述</div>
+        <div className="t-line font-14"></div>
       </div>
     </ResumnCard>
   )

@@ -39,7 +39,7 @@ export default (): React.ReactElement => {
         {!isEmpty(resume.workExpList) && <WorkExpList workExpList={resume.workExpList} />}
         {!isEmpty(resume.skillList) && <SkillList skillList={resume.skillList}></SkillList>}
         {!isEmpty(resume.aboutme) && <Aboutme aboutme={resume.aboutme}></Aboutme>}
-        {!isEmpty(resume.workList) && <IndividualWorks workList={resume.workList} />}
+        {/* {!isEmpty(resume.workList) && <IndividualWorks workList={resume.workList} />} */}
         {!isEmpty(resume.projectList) && <ProjectList projectList={resume.projectList} />}
       </Main>
 

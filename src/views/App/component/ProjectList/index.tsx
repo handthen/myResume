@@ -20,14 +20,19 @@ export default (props: Resume): React.ReactElement => {
               </div>
               <div className="">{v.project_role}</div>
             </div>
-            <div className="font-14 mb4">
-              <span className="fw700">技术栈：</span>
-              <span>{v.project_technology}</span>
-            </div>
-            <div className="font-14 mb4">
-              <span className="fw700">项目描述：</span>
-              <span>{v.project_desc}</span>
-            </div>
+            {v.project_technology && (
+              <div className="font-14 mb4">
+                <span className="fw700">技术栈：</span>
+                <span>{v.project_technology}</span>
+              </div>
+            )}
+            {v.project_desc && (
+              <div className="font-14 mb4">
+                <span className="fw700">项目描述：</span>
+                <span>{v.project_desc}</span>
+              </div>
+            )}
+
             <div className="font-14">
               <span className="fw700">主要工作：</span>
               <span>{v.project_content}</span>

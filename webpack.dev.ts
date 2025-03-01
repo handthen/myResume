@@ -74,12 +74,6 @@ module.exports = merge(baseConfig, {
       },
     }),
     new ESLintPlugin(),
-    new webpack.HotModuleReplacementPlugin({
-      exclude: [
-        /\.svg$/,
-        /\.tsx$/, // 排除所有SVG文件的HMR
-      ],
-    }), //热更新
     // new Friendly({
     //   compilationSuccessInfo: {
     //     messages: [`${process.env.NODE_ENV}  localhost: http://localhost:${process.env.PORT}`, process.env.L_IP_ ? `                        http://${process.env.L_IP_}:${process.env.PORT}` : ''],

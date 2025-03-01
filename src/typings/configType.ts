@@ -1,4 +1,55 @@
 /** 简历配置内容 */
+
+export interface educationItem {
+  edu_time: [string | undefined, string | number]
+  school: string
+  major?: string
+  /** 学历 */
+  academic_degree?: string
+}
+
+export interface workExpItem {
+  company_name: string
+  department_name: string
+  work_time: [string | undefined, string | number]
+  work_desc: string
+}
+
+export interface projectItem {
+  /** 项目名称 */
+  project_name: string
+  /** 担任角色 */
+  project_role: string
+  /** 描述 */
+  project_desc?: string
+  /** 项目内容，负责内容 */
+  project_content?: string
+  /** 项目时间 */
+  project_time?: string | Array<string>
+  project_technology?: string
+}
+
+export interface skillItem {
+  /** 技能项 */
+  skill_name?: string
+  /** 掌握程度 */
+  skill_level?: number
+  /** 技能描述 */
+  skill_desc?: string
+}
+
+export interface awardItem {
+  // 奖项
+  award_info: string
+  award_time?: string
+}
+
+export interface workItem {
+  work_name?: string
+  work_desc?: string
+  visit_link?: string
+}
+
 export type Resume = {
   /** 头像 */
   avatar?: {
@@ -44,60 +95,22 @@ export type Resume = {
   }
 
   /** 教育背景 */
-  educationList?: Array<{
-    edu_time: [string | undefined, string | number]
-    school: string
-    major?: string
-    /** 学历 */
-    academic_degree?: string
-  }>
+  educationList?: Array<educationItem>
 
   /** 工作经历 */
-  workExpList?: Array<{
-    company_name: string
-    department_name: string
-    work_time: [string | undefined, string | number]
-    work_desc: string
-  }>
+  workExpList?: Array<workExpItem>
 
   /** 项目经历 */
-  projectList?: Array<{
-    /** 项目名称 */
-    project_name: string
-    /** 担任角色 */
-    project_role: string
-    /** 描述 */
-    project_desc?: string
-    /** 项目内容，负责内容 */
-    project_content?: string
-    /** 项目时间 */
-    project_time?: string | Array<string>
-    project_technology?: string
-  }>
+  projectList?: Array<projectItem>
 
   /** 个人技能 */
-  skillList?: Array<{
-    /** 技能项 */
-    skill_name?: string
-    /** 掌握程度 */
-    skill_level?: number
-    /** 技能描述 */
-    skill_desc?: string
-  }>
+  skillList?: Array<skillItem>
 
   /** 更多信息 */
-  awardList?: Array<{
-    // 奖项
-    award_info: string
-    award_time?: string
-  }>
+  awardList?: Array<awardItem>
 
   /** 作品 */
-  workList?: Array<{
-    work_name?: string
-    work_desc?: string
-    visit_link?: string
-  }>
+  workList?: Array<workItem>
 
   /** 自我介绍 */
   aboutme?: {
