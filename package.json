@@ -7,9 +7,8 @@
     "build": "cross-env NODE_ENV=production webpack --config=webpack.prod.ts",
     "dev": "cross-env NODE_ENV=development cross-env PORT=9091 webpack server --config=webpack.dev.ts --client-progress ",
     "prod": "cross-env NODE_ENV=production webpack server --config=webpack.prod.ts",
-    "start": "cross-env NODE_ENV=production  node ./config/start.ts",
-    "start:pord": "cross-env NODE_ENV=production node ./config/start.ts",
-    "copy": "node config/copyFile"
+    "start": "cross-env NODE_ENV=development  node ./config/start.ts",
+    "start:pord": "cross-env NODE_ENV=production node ./config/start.ts"
   },
   "keywords": [],
   "author": "",

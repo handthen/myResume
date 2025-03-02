@@ -4,6 +4,7 @@ module.exports = (function () {
   const webpack = require('webpack')
   const HtmlWebpackPlugin = require('html-webpack-plugin')
   const webpackBar = require('webpackbar')
+  const getEnvs = require('./config/env')
 
   function getDevConfig() {
     const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
@@ -39,7 +40,6 @@ module.exports = (function () {
       path: path.resolve(__dirname, 'dist'),
       filename: 'js/[name].[contenthash:5].js',
       clean: true,
-      publicPath: './',
       // assetModuleFilename: "static/images/[name].[contenthash:5][ext]",
     },
     //loader
@@ -77,6 +77,10 @@ module.exports = (function () {
     },
     //插件
     plugins: [
+      new webpack.DefinePlugin({
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV), //`'${process.env.NODE_ENV}'`
+        ...getEnvs(process.env.NODE_ENV),
+      }),
       new webpackBar({
         name: '嘤嘤嘤-------',
         color: 'green',
@@ -87,10 +91,10 @@ module.exports = (function () {
       // new webpack.ProvidePlugin({
       //   process: 'process/browser',
       // }),
-      new webpack.DefinePlugin({
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV), //`'${process.env.NODE_ENV}'`
-        BASE_URL: '/api',
-      }),
+      // new webpack.DefinePlugin({
+      //   NODE_ENV: JSON.stringify(process.env.NODE_ENV), //`'${process.env.NODE_ENV}'`
+      //   BASE_URL: '/api',
+      // }),
       // @ts-ignore
 
       // new ForkTsCheckerWebpackPlugin({
@@ -119,6 +123,6 @@ module.exports = (function () {
       plugins: [...plugins],
     },
     stats: 'errors-only',
-    // cache: { type: 'filesystem' },
+    cache: { type: 'filesystem' },
   }
 })()

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { message } from 'antd'
 
 const http = axios.create({
-  baseURL: BASE_URL,
+  baseURL: '/resumn',
   timeout: 6000,
   withCredentials: true,
 })
@@ -34,7 +34,7 @@ http.interceptors.response.use(
   async (error) => {
     const { response } = error
     const { data } = response
-    if (data.code != 200) {
+    if (data && data.code != 200) {
       message.error(data.msg || '服务异常')
       return Promise.reject(data)
     }

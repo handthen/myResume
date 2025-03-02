@@ -15,6 +15,13 @@ module.exports = merge(baseConfig, {
     client: {
       progress: true,
     },
+    proxy: {
+      '/resumn': {
+        target: 'http://127.0.0.1:9191',
+        changeOrigin: true,
+        pathRewrite: { '^/resumn': '' },
+      },
+    },
   },
   module: {
     rules: [
@@ -52,8 +59,8 @@ module.exports = merge(baseConfig, {
     ],
   },
   plugins: [
-
     new ESLintPlugin(),
+
     // new Friendly({
     //   compilationSuccessInfo: {
     //     messages: [`${process.env.NODE_ENV}  localhost: http://localhost:${process.env.PORT}`, process.env.L_IP_ ? `                        http://${process.env.L_IP_}:${process.env.PORT}` : ''],

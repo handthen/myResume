@@ -11,15 +11,17 @@ import IndividualWorks from './component/IndividualWorks'
 import type { Resume } from '@/typings/configType'
 import type { State } from '@/typings/storeType'
 import { getSearchParams } from '@/utils'
+import { useParams } from 'react-router'
 
 export default (): React.ReactElement => {
+  const params = useParams()
   const resume = useSelector<State>((state) => state.app.resumeConfig) as Resume
   const dispatch = useDispatch()
   const SearchParams = getSearchParams()
   useEffect(() => {
     dispatch({
       type: 'app/getResume',
-      payload: SearchParams.get('user'),
+      payload: params.userId,
     })
   }, [])
 
@@ -28,7 +30,6 @@ export default (): React.ReactElement => {
     if (Array.isArray(params) && !params.length) return true
     if (!Object.keys(params).length) return true
   }
-
 
   return (
     <Layout>

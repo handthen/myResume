@@ -1,5 +1,6 @@
 import type { Worker } from '@/typings/actionTypes'
 import { getStoreSlice, getWacthEffect, extend } from '@/utils'
+import { getResume } from '@/api/app'
 import type { State } from '@/typings/storeType'
 
 const worker: Worker<State['app']> = {
@@ -11,19 +12,28 @@ const worker: Worker<State['app']> = {
     sideOpen: false,
   },
   effect: {
-    *getResume({ callback, payload }, { put }) {
-      let data: unknown = null
+    *getResume({ success, fail, payload }, { put }) {
+      let data: any = null
       if (payload === '9527') {
-        data = yield require('../../../resume.json')
+        data = yield getResume({ id: payload })
       } else {
-        data = yield require('../../../v.json')
+        data = {
+          data: {
+            content: yield require('../../../v.json'),
+          },
+          code: 200,
+        }
+      }
+
+      if (data.code != 200) {
+        return fail && fail(data)
       }
 
       yield put({
         type: 'app/set_resume_config',
-        payload: data,
+        payload: typeof data.data.content == 'string' ? JSON.parse(data.data.content) : data.data.content,
       })
-      callback && callback(data)
+      success && success(data)
     },
   },
   reducer: {

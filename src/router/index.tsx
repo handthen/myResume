@@ -1,13 +1,22 @@
-import { useRoutes } from "react-router-dom"
-import React from "react"
-import App from "@/views/App"
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import React from 'react'
+import App from '@/views/App'
 export default function Index() {
-    const route = useRoutes([
-        {
-            path: "/",
-            element: <App />,
-        }
-    ])
+  const route = createBrowserRouter(
+    [
+      {
+        path: '/',
+        element: <App />,
+      },
+      {
+        path: '/:userId',
+        element: <App />,
+      },
+    ],
+    {
+      basename: '/',
+    }
+  )
 
-    return route
+  return <RouterProvider router={route} />
 }

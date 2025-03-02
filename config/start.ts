@@ -44,7 +44,7 @@ async function start() {
       const envStr = process.env.NODE_ENV == 'development' ? 'dev' : 'prod'
       delete require.cache[require.resolve(`../webpack.${envStr}.ts`)]
       const webpackConfig = require(`../webpack.${envStr}.ts`)
-      console.log(webpackConfig.devtool)
+      console.log(webpackConfig.devtool, envStr)
       const erbpackDevServerOption = Object.assign({}, webpackConfig.devServer || {}, {})
       const compiler = webpack(webpackConfig)
       const webpackServer = new webpackDevServer(compiler, erbpackDevServerOption)
@@ -54,7 +54,7 @@ async function start() {
           return
         }
         if (!watcher) {
-          watch(webpackServer)
+          watch(webpackServer, envStr)
         }
         res(webpackServer)
       })
@@ -64,8 +64,8 @@ async function start() {
   })
 }
 
-function watch(server) {
-  const filePath = path.resolve(__dirname, '../', 'webpack.prod.ts')
+function watch(server, envStr) {
+  const filePath = path.resolve(__dirname, '../', `webpack.${envStr}.ts`)
   if (!watcher) {
     let webpackServer = server
     watcher = fs.watchFile(filePath, (p, n) => {
