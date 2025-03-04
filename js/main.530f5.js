@@ -31464,7 +31464,7 @@ var Icons = {
     if (Array.isArray(params) && !params.length) return true;
     if (!Object.keys(params).length) return true;
   }
-  return /*#__PURE__*/react.createElement(Layout, null, /*#__PURE__*/react.createElement(Header, null), /*#__PURE__*/react.createElement(Main, null, "/myResumn", !isEmpty(resume.profile) && /*#__PURE__*/react.createElement(Profile, {
+  return /*#__PURE__*/react.createElement(Layout, null, /*#__PURE__*/react.createElement(Header, null), /*#__PURE__*/react.createElement(Main, null, !isEmpty(resume.profile) && /*#__PURE__*/react.createElement(Profile, {
     profile: resume.profile,
     avatar: resume.avatar
   }), !isEmpty(resume.educationList) && /*#__PURE__*/react.createElement(EducationList, {
@@ -31487,20 +31487,24 @@ var Icons = {
 
 
 
+
 var appLoader = /*#__PURE__*/function () {
   var _ref = (0,asyncToGenerator/* default */.A)( /*#__PURE__*/regenerator_default().mark(function _callee(e) {
-    var _e$params, params, dispatch;
+    var _e$params, params, search, dispatch;
     return regenerator_default().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _e$params = e.params, params = _e$params === void 0 ? {} : _e$params;
+            search = getSearchParams();
             dispatch = useDispatch();
-            dispatch(getResumnAsync({
-              id: params.userId
-            }));
+            if (search.get('userId')) {
+              dispatch(getResumnAsync({
+                id: search.get('userId')
+              }));
+            }
             return _context.abrupt("return", null);
-          case 4:
+          case 5:
           case "end":
             return _context.stop();
         }
@@ -31537,7 +31541,7 @@ function importComponent(path, auth) {
 function Index() {
   var route = createBrowserRouter(routeConfig, {
     // @ts-ignore
-    basename: "/myResumn"
+    // basename: "/BASENAME",
   });
   return /*#__PURE__*/react.createElement(RouterProvider, {
     router: route
@@ -95104,4 +95108,4 @@ function _unsupportedIterableToArray(o, minLen) {
 /******/ var __webpack_exports__ = (__webpack_exec__(22387));
 /******/ }
 ]);
-//# sourceMappingURL=main.7da2e.js.map
+//# sourceMappingURL=main.530f5.js.map
