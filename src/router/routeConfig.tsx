@@ -3,11 +3,15 @@ import Auth from '@/components/Auth'
 import App from '@/views/App'
 import { useDispatch } from 'react-redux'
 import { getResumnAsync } from '@/store/features/app'
+import { getSearchParams } from '@/utils'
 
 const appLoader = async (e) => {
   const { params = {} } = e
+  const search = getSearchParams()
   const dispatch = useDispatch<AppDispatch>()
-  dispatch(getResumnAsync({ id: params.userId }))
+  if (search.get('userId')) {
+    dispatch(getResumnAsync({ id: search.get('userId') }))
+  }
   return null
 }
 
