@@ -31464,7 +31464,7 @@ var Icons = {
     if (Array.isArray(params) && !params.length) return true;
     if (!Object.keys(params).length) return true;
   }
-  return /*#__PURE__*/react.createElement(Layout, null, /*#__PURE__*/react.createElement(Header, null), /*#__PURE__*/react.createElement(Main, null, !isEmpty(resume.profile) && /*#__PURE__*/react.createElement(Profile, {
+  return /*#__PURE__*/react.createElement(Layout, null, /*#__PURE__*/react.createElement(Header, null), /*#__PURE__*/react.createElement(Main, null, "/myResumn", !isEmpty(resume.profile) && /*#__PURE__*/react.createElement(Profile, {
     profile: resume.profile,
     avatar: resume.avatar
   }), !isEmpty(resume.educationList) && /*#__PURE__*/react.createElement(EducationList, {
@@ -95104,4 +95104,4 @@ function _unsupportedIterableToArray(o, minLen) {
 /******/ var __webpack_exports__ = (__webpack_exec__(22387));
 /******/ }
 ]);
-//# sourceMappingURL=main.9b1c1.js.map
+//# sourceMappingURL=main.7da2e.js.map
