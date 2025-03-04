@@ -6,6 +6,8 @@ module.exports = (function () {
   const webpackBar = require('webpackbar')
   const getEnvs = require('./config/env.ts')
 
+  const envs = getEnvs(process.env.NODE_ENV)
+  console.log(envs);
   function getDevConfig() {
     const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
     const compileLoader =
@@ -40,6 +42,7 @@ module.exports = (function () {
       path: path.resolve(__dirname, 'dist'),
       filename: 'js/[name].[contenthash:5].js',
       clean: true,
+      publicPath: JSON.parse(envs.BASENAME)
       // assetModuleFilename: "static/images/[name].[contenthash:5][ext]",
     },
     //loader
@@ -79,7 +82,7 @@ module.exports = (function () {
     plugins: [
       new webpack.DefinePlugin({
         NODE_ENV: JSON.stringify(process.env.NODE_ENV), //`'${process.env.NODE_ENV}'`
-        ...getEnvs(process.env.NODE_ENV),
+        ...envs,
       }),
       new webpackBar({
         name: '嘤嘤嘤-------',

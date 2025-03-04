@@ -8,6 +8,7 @@ import 'antd/dist/antd.variable.min.css'
 import './style/global.scss'
 import '@/style/iconfont/iconfont.css'
 
+
 createRoot(document.getElementById('app')!).render(
   <StrictMode>
     <Provider store={store}>

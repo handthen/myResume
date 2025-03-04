@@ -6,10 +6,10 @@
 
 var react__WEBPACK_IMPORTED_MODULE_0___namespace_cache;
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Ix: () => (/* binding */ Router),
-/* harmony export */   Ye: () => (/* binding */ useRoutes)
+/* harmony export */   pg: () => (/* binding */ RouterProvider),
+/* harmony export */   zw: () => (/* binding */ enhanceManualRouteObjects)
 /* harmony export */ });
-/* unused harmony exports Await, MemoryRouter, Navigate, Outlet, Route, RouterProvider, Routes, UNSAFE_DataRouterContext, UNSAFE_DataRouterStateContext, UNSAFE_DataStaticRouterContext, UNSAFE_LocationContext, UNSAFE_NavigationContext, UNSAFE_RouteContext, UNSAFE_enhanceManualRouteObjects, createMemoryRouter, createRoutesFromChildren, createRoutesFromElements, renderMatches, useActionData, useAsyncError, useAsyncValue, useHref, useInRouterContext, useLoaderData, useLocation, useMatch, useMatches, useNavigate, useNavigation, useNavigationType, useOutlet, useOutletContext, useParams, useResolvedPath, useRevalidator, useRouteError, useRouteLoaderData */
+/* unused harmony exports Await, MemoryRouter, Navigate, Outlet, Route, Router, Routes, UNSAFE_DataRouterContext, UNSAFE_DataRouterStateContext, UNSAFE_DataStaticRouterContext, UNSAFE_LocationContext, UNSAFE_NavigationContext, UNSAFE_RouteContext, createMemoryRouter, createRoutesFromChildren, createRoutesFromElements, renderMatches, useActionData, useAsyncError, useAsyncValue, useHref, useInRouterContext, useLoaderData, useLocation, useMatch, useMatches, useNavigate, useNavigation, useNavigationType, useOutlet, useOutletContext, useParams, useResolvedPath, useRevalidator, useRouteError, useRouteLoaderData, useRoutes */
 /* harmony import */ var _remix_run_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45588);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(96540);
 /**
@@ -210,7 +210,7 @@ const DataStaticRouterContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.
 
 if (false) {}
 
-const DataRouterContext = /*#__PURE__*/(/* unused pure expression or super */ null && (React.createContext(null)));
+const DataRouterContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createContext(null);
 
 if (false) {}
 
@@ -860,7 +860,7 @@ function RouterProvider(_ref) {
   // but we pass our serialized hydration data into the router so state here
   // is already synced with what the server saw
   () => router.state);
-  let navigator = React.useMemo(() => {
+  let navigator = react__WEBPACK_IMPORTED_MODULE_0__.useMemo(() => {
     return {
       createHref: router.createHref,
       encodeLocation: router.encodeLocation,
@@ -877,7 +877,7 @@ function RouterProvider(_ref) {
     };
   }, [router]);
   let basename = router.basename || "/";
-  return /*#__PURE__*/React.createElement(DataRouterContext.Provider, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DataRouterContext.Provider, {
     value: {
       router,
       navigator,
@@ -885,14 +885,14 @@ function RouterProvider(_ref) {
       // Do we need this?
       basename
     }
-  }, /*#__PURE__*/React.createElement(DataRouterStateContext.Provider, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DataRouterStateContext.Provider, {
     value: state
-  }, /*#__PURE__*/React.createElement(Router, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Router, {
     basename: router.basename,
     location: router.state.location,
     navigationType: router.state.historyAction,
     navigator: navigator
-  }, router.state.initialized ? /*#__PURE__*/React.createElement(Routes, null) : fallbackElement)));
+  }, router.state.initialized ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Routes, null) : fallbackElement)));
 }
 
 /**
@@ -984,7 +984,7 @@ function Outlet(props) {
  * @see https://reactrouter.com/components/route
  */
 function Route(_props) {
-   false ? 0 : invariant(false) ;
+   false ? 0 : (0,_remix_run_router__WEBPACK_IMPORTED_MODULE_1__/* .invariant */ .V1)(false) ;
 }
 
 /**
@@ -1069,7 +1069,7 @@ function Routes(_ref5) {
     children,
     location
   } = _ref5;
-  let dataRouterContext = React.useContext(DataRouterContext); // When in a DataRouterContext _without_ children, we use the router routes
+  let dataRouterContext = react__WEBPACK_IMPORTED_MODULE_0__.useContext(DataRouterContext); // When in a DataRouterContext _without_ children, we use the router routes
   // directly.  If we have children, then we're in a descendant tree and we
   // need to use child routes.
 
@@ -1235,21 +1235,21 @@ function createRoutesFromChildren(children, parentPath) {
   }
 
   let routes = [];
-  React.Children.forEach(children, (element, index) => {
-    if (! /*#__PURE__*/React.isValidElement(element)) {
+  react__WEBPACK_IMPORTED_MODULE_0__.Children.forEach(children, (element, index) => {
+    if (! /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.isValidElement(element)) {
       // Ignore non-elements. This allows people to more easily inline
       // conditionals in their route config.
       return;
     }
 
-    if (element.type === React.Fragment) {
+    if (element.type === react__WEBPACK_IMPORTED_MODULE_0__.Fragment) {
       // Transparently support React.Fragment and its children.
       routes.push.apply(routes, createRoutesFromChildren(element.props.children, parentPath));
       return;
     }
 
-    !(element.type === Route) ?  false ? 0 : invariant(false) : void 0;
-    !(!element.props.index || !element.props.children) ?  false ? 0 : invariant(false) : void 0;
+    !(element.type === Route) ?  false ? 0 : (0,_remix_run_router__WEBPACK_IMPORTED_MODULE_1__/* .invariant */ .V1)(false) : void 0;
+    !(!element.props.index || !element.props.children) ?  false ? 0 : (0,_remix_run_router__WEBPACK_IMPORTED_MODULE_1__/* .invariant */ .V1)(false) : void 0;
     let treePath = [...parentPath, index];
     let route = {
       id: element.props.id || treePath.join("-"),
@@ -1321,4 +1321,4 @@ function createMemoryRouter(routes, opts) {
 /***/ })
 
 }]);
-//# sourceMappingURL=lib.f483a6a5.a146a.js.map
+//# sourceMappingURL=lib.f483a6a5.5ec9d.js.map

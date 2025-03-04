@@ -5,9 +5,9 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   I9: () => (/* binding */ HashRouter)
+/* harmony export */   Ys: () => (/* binding */ createBrowserRouter)
 /* harmony export */ });
-/* unused harmony exports BrowserRouter, Form, Link, NavLink, ScrollRestoration, UNSAFE_useScrollRestoration, createBrowserRouter, createHashRouter, createSearchParams, unstable_HistoryRouter, useBeforeUnload, useFetcher, useFetchers, useFormAction, useLinkClickHandler, useSearchParams, useSubmit */
+/* unused harmony exports BrowserRouter, Form, HashRouter, Link, NavLink, ScrollRestoration, UNSAFE_useScrollRestoration, createHashRouter, createSearchParams, unstable_HistoryRouter, useBeforeUnload, useFetcher, useFetchers, useFormAction, useLinkClickHandler, useSearchParams, useSubmit */
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(96540);
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(47767);
 /* harmony import */ var _remix_run_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(45588);
@@ -205,13 +205,13 @@ const _excluded = (/* unused pure expression or super */ null && (["onClick", "r
 ////////////////////////////////////////////////////////////////////////////////
 
 function createBrowserRouter(routes, opts) {
-  return createRouter({
+  return (0,_remix_run_router__WEBPACK_IMPORTED_MODULE_1__/* .createRouter */ .aE)({
     basename: opts == null ? void 0 : opts.basename,
-    history: createBrowserHistory({
+    history: (0,_remix_run_router__WEBPACK_IMPORTED_MODULE_1__/* .createBrowserHistory */ .zR)({
       window: opts == null ? void 0 : opts.window
     }),
     hydrationData: (opts == null ? void 0 : opts.hydrationData) || parseHydrationData(),
-    routes: UNSAFE_enhanceManualRouteObjects(routes)
+    routes: (0,react_router__WEBPACK_IMPORTED_MODULE_2__/* .UNSAFE_enhanceManualRouteObjects */ .zw)(routes)
   }).initialize();
 }
 function createHashRouter(routes, opts) {
@@ -248,7 +248,7 @@ function deserializeErrors(errors) {
     // Hey you!  If you change this, please change the corresponding logic in
     // serializeErrors in react-router-dom/server.tsx :)
     if (val && val.__type === "RouteErrorResponse") {
-      serialized[key] = new ErrorResponse(val.status, val.statusText, val.data, val.internal === true);
+      serialized[key] = new _remix_run_router__WEBPACK_IMPORTED_MODULE_1__/* .ErrorResponse */ ._p(val.status, val.statusText, val.data, val.internal === true);
     } else if (val && val.__type === "Error") {
       let error = new Error(val.message); // Wipe away the client-side stack trace.  Nothing to fill it in with
       // because we don't serialize SSR stack traces for security reasons
@@ -307,22 +307,22 @@ function HashRouter(_ref2) {
     children,
     window
   } = _ref2;
-  let historyRef = react__WEBPACK_IMPORTED_MODULE_0__.useRef();
+  let historyRef = React.useRef();
 
   if (historyRef.current == null) {
-    historyRef.current = (0,_remix_run_router__WEBPACK_IMPORTED_MODULE_1__/* .createHashHistory */ .TM)({
+    historyRef.current = createHashHistory({
       window,
       v5Compat: true
     });
   }
 
   let history = historyRef.current;
-  let [state, setState] = react__WEBPACK_IMPORTED_MODULE_0__.useState({
+  let [state, setState] = React.useState({
     action: history.action,
     location: history.location
   });
-  react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect(() => history.listen(setState), [history]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router__WEBPACK_IMPORTED_MODULE_2__/* .Router */ .Ix, {
+  React.useLayoutEffect(() => history.listen(setState), [history]);
+  return /*#__PURE__*/React.createElement(Router, {
     basename: basename,
     children: children,
     location: state.location,
@@ -948,4 +948,4 @@ function warning(cond, message) {
 /***/ })
 
 }]);
-//# sourceMappingURL=lib.02b657f6.f3cd2.js.map
+//# sourceMappingURL=lib.02b657f6.f8c1f.js.map

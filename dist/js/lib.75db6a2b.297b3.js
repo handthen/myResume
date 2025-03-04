@@ -7,15 +7,17 @@
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   HS: () => (/* binding */ joinPaths),
 /* harmony export */   Rr: () => (/* binding */ parsePath),
-/* harmony export */   TM: () => (/* binding */ createHashHistory),
 /* harmony export */   V1: () => (/* binding */ invariant),
+/* harmony export */   _p: () => (/* binding */ ErrorResponse),
+/* harmony export */   aE: () => (/* binding */ createRouter),
 /* harmony export */   pX: () => (/* binding */ isRouteErrorResponse),
 /* harmony export */   pb: () => (/* binding */ stripBasename),
 /* harmony export */   rc: () => (/* binding */ Action),
 /* harmony export */   tH: () => (/* binding */ AbortedDeferredError),
-/* harmony export */   ue: () => (/* binding */ matchRoutes)
+/* harmony export */   ue: () => (/* binding */ matchRoutes),
+/* harmony export */   zR: () => (/* binding */ createBrowserHistory)
 /* harmony export */ });
-/* unused harmony exports ErrorResponse, IDLE_FETCHER, IDLE_NAVIGATION, UNSAFE_convertRoutesToDataRoutes, UNSAFE_getPathContributingMatches, createBrowserHistory, createMemoryHistory, createPath, createRouter, createStaticHandler, defer, generatePath, getStaticContextFromError, getToPathname, json, matchPath, normalizePathname, redirect, resolvePath, resolveTo, warning */
+/* unused harmony exports IDLE_FETCHER, IDLE_NAVIGATION, UNSAFE_convertRoutesToDataRoutes, UNSAFE_getPathContributingMatches, createHashHistory, createMemoryHistory, createPath, createStaticHandler, defer, generatePath, getStaticContextFromError, getToPathname, json, matchPath, normalizePathname, redirect, resolvePath, resolveTo, warning */
 /**
  * @remix-run/router v1.2.1
  *
@@ -3694,4 +3696,4 @@ function getTargetMatch(matches, location) {
 /***/ })
 
 }]);
-//# sourceMappingURL=lib.75db6a2b.1c971.js.map
+//# sourceMappingURL=lib.75db6a2b.297b3.js.map

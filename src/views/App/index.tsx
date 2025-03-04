@@ -23,6 +23,8 @@ export default (): React.ReactElement => {
     <Layout>
       <Header />
       <Main>
+        {/* @ts-ignore */}
+        {BASENAME}
         {!isEmpty(resume.profile) && <Profile profile={resume.profile} avatar={resume.avatar} />}
         {!isEmpty(resume.educationList) && <EducationList educationList={resume.educationList} />}
         {!isEmpty(resume.workExpList) && <WorkExpList workExpList={resume.workExpList} />}
