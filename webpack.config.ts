@@ -42,7 +42,7 @@ module.exports = (function () {
       path: path.resolve(__dirname, 'dist'),
       filename: 'js/[name].[contenthash:5].js',
       clean: true,
-      publicPath: JSON.parse(envs.BASENAME)
+      // publicPath: JSON.parse(envs.BASENAME)
       // assetModuleFilename: "static/images/[name].[contenthash:5][ext]",
     },
     //loader
