@@ -6,7 +6,7 @@ const envs = {
     BASENAME:'/'
   },
   production: {
-    BASENAME:'/myResumn'
+    BASENAME:'/'
   },
 }
 
