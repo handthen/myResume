@@ -4,7 +4,8 @@ import router from './routeConfig'
 
 export default function Index() {
   const route = createBrowserRouter(router, {
-    basename: '/',
+    // @ts-ignore
+    basename: BASENAME,
   })
 
   return <RouterProvider router={route} />

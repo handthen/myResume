@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getResume } from '@/api/app'
+import type {State} from "@/typings/storeType"
 
-const initialState = {
+const initialState:State['app'] = {
   resumeConfig: {},
   theme: {
     themeColor:'#273f75'

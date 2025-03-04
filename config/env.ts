@@ -2,8 +2,12 @@ const envs = {
   env: {
     BASE_URL: '/api',
   },
-  development: {},
-  production: {},
+  development: {
+    BASENAME:'/'
+  },
+  production: {
+    BASENAME:'/myResumn'
+  },
 }
 
 module.exports = function (env) {
