@@ -3,6 +3,7 @@ import styles from './index.module.scss'
 import { Dropdown } from 'antd'
 import { isWeb } from '@/utils/index'
 import { useDispatch } from 'react-redux'
+import { setSideOpen } from '@/store/features/app'
 
 export default (): React.ReactElement => {
   const [activeKey, setActive] = useState('简体中文')
@@ -15,10 +16,7 @@ export default (): React.ReactElement => {
   ]
 
   function openSide() {
-    dispatch({
-      type: 'app/set_sideOpen',
-      payload: true,
-    })
+    dispatch(setSideOpen(true))
   }
   return (
     <div className={styles.header}>

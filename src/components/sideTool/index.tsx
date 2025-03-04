@@ -13,7 +13,7 @@ import AboutmePlan from './component/AboutmePlan'
 import SkillPlan from './component/SkillPlan'
 import WorkPlan from './component/workPlan'
 import ProjectPlan from './component/ProjectPlan'
-import Style from './component/index.module.scss'
+import { setTheme, setResumn, setSideOpen } from '@/store/features/app'
 
 const styles: any = {
   tool: {
@@ -41,10 +41,7 @@ export default (): React.ReactElement => {
     reader.onload = function () {
       try {
         const config = JSON.parse(this.result as string)
-        dispatch({
-          type: 'app/set_resume_config',
-          payload: config,
-        })
+        dispatch(setResumn(config))
       } catch (e) {
         console.log(e)
         message.error('上传错误，请检查上传格式: JSON')
@@ -54,12 +51,7 @@ export default (): React.ReactElement => {
     reader.readAsText(file)
   }
   function onChange(e) {
-    dispatch({
-      type: 'app/set_theme_color',
-      payload: {
-        themeColor: e.b16,
-      },
-    })
+    dispatch(setTheme(e.b16))
     ConfigProvider.config({
       theme: {
         primaryColor: e.b16,
@@ -119,7 +111,7 @@ export default (): React.ReactElement => {
       <Drawer
         open={sideOpen}
         onClose={() => {
-          dispatch({ type: 'app/set_sideOpen', payload: false })
+          dispatch(setSideOpen(false))
         }}
         maskClosable={true}
         width={120}
@@ -184,7 +176,7 @@ function Active1() {
   const dispatch = useDispatch()
   const resumeConfig = useSelector<State, State['app']['resumeConfig']>((state) => state.app.resumeConfig)
 
-  function setResumn(val: any, key: string, isArray?: boolean) {
+  function setResumnVal(val: any, key: string, isArray?: boolean) {
     let targte = {}
     let currentTagger = targte
     // if (isArray && Array.isArray(resumeConfig[key])) {
@@ -200,14 +192,10 @@ function Active1() {
       }
       currentTagger = targte[v]
     }
-    console.log(targte, '--targte')
-    dispatch({
-      type: 'app/set_resume_config',
-      payload: targte,
-    })
+    dispatch(setResumn(targte))
   }
   const baseProp = {
-    setResumn,
+    setResumn: setResumnVal,
     planWidth,
   }
   return (

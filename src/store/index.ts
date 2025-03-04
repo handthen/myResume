@@ -1,10 +1,13 @@
-import { applyMiddleware, createStore } from 'redux';
-import createSaga from 'redux-saga';
-import reducer from './reducer';
-import rootSaga from '@/saga';
+import {configureStore} from "@reduxjs/toolkit"
+import appslice from "./features/app"
 
-const Saga = createSaga();
-const store = createStore(reducer, applyMiddleware(Saga));
-Saga.run(rootSaga);
 
-export default store;
+const store = configureStore({
+    reducer:{ 
+        app:appslice
+     }
+})
+
+
+export type AppDispatch = typeof store.dispatch
+export default  store

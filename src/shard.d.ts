@@ -1,3 +1,7 @@
+
+
+import store from "@/store"
+
 declare module '*.ts'
 declare module '*.tsx'
 declare module '*.css'
@@ -9,7 +13,9 @@ declare class CustomErr extends Error {
   constructor(message: string)
 }
 
-declare const BASE_URL: string
+declare global {
+  type AppDispatch = any
+}
 // axios 解决返回类型报错
 declare module 'axios' {
   export interface AxiosRequestConfig {

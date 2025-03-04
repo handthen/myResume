@@ -1,30 +1,18 @@
 import React, { useEffect } from 'react'
 import { Main, Header, Layout, Footer } from '@/layout'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+
 import Profile from './component/Profile'
 import ProjectList from './component/ProjectList'
 import EducationList from './component/EducationList'
 import WorkExpList from './component/WorkExpList'
 import Aboutme from './component/Aboutme'
 import SkillList from './component/SkillList'
-import IndividualWorks from './component/IndividualWorks'
 import type { Resume } from '@/typings/configType'
 import type { State } from '@/typings/storeType'
-import { getSearchParams } from '@/utils'
-import { useParams } from 'react-router'
 
 export default (): React.ReactElement => {
-  const params = useParams()
   const resume = useSelector<State>((state) => state.app.resumeConfig) as Resume
-  const dispatch = useDispatch()
-  const SearchParams = getSearchParams()
-  useEffect(() => {
-    dispatch({
-      type: 'app/getResume',
-      payload: params.userId,
-    })
-  }, [])
-
   function isEmpty(params: any) {
     if (!params && params !== 0) return true
     if (Array.isArray(params) && !params.length) return true

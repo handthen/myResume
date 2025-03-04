@@ -8,11 +8,10 @@ import 'antd/dist/antd.variable.min.css'
 import './style/global.scss'
 import '@/style/iconfont/iconfont.css'
 
-console.log(BASE_URL)
 createRoot(document.getElementById('app')!).render(
-  // <StrictMode>
-  <Provider store={store}>
-    <BaseRoute />
-  </Provider>
-  // </StrictMode>
+  <StrictMode>
+    <Provider store={store}>
+      <BaseRoute />
+    </Provider>
+  </StrictMode>
 )

@@ -1,6 +1,4 @@
 import type { Action, Worker } from '@/typings/actionTypes'
-import { takeEvery } from 'redux-saga/effects'
-import * as effects from 'redux-saga/effects'
 import domToImage from './domToImage'
 import { message } from 'antd'
 import { resourceUsage } from 'process'

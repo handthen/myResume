@@ -4,7 +4,7 @@ module.exports = (function () {
   const webpack = require('webpack')
   const HtmlWebpackPlugin = require('html-webpack-plugin')
   const webpackBar = require('webpackbar')
-  const getEnvs = require('./config/env')
+  const getEnvs = require('./config/env.ts')
 
   function getDevConfig() {
     const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
