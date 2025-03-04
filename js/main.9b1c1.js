@@ -31536,7 +31536,8 @@ function importComponent(path, auth) {
 
 function Index() {
   var route = createBrowserRouter(routeConfig, {
-    basename: '/'
+    // @ts-ignore
+    basename: "/myResumn"
   });
   return /*#__PURE__*/react.createElement(RouterProvider, {
     router: route
@@ -95103,4 +95104,4 @@ function _unsupportedIterableToArray(o, minLen) {
 /******/ var __webpack_exports__ = (__webpack_exec__(22387));
 /******/ }
 ]);
-//# sourceMappingURL=main.13652.js.map
+//# sourceMappingURL=main.9b1c1.js.map
